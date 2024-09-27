@@ -21,7 +21,7 @@ public class MovieController {
 	@Autowired
     private MovieService movieService;
 
-    // Hiển thị danh sách phim
+    // Hiển thị danh sách phim Hoàng Quân
     @GetMapping
     public String listMovies(Model model) {
         List<MovieEntity> movie = movieService.getAllMovies();
