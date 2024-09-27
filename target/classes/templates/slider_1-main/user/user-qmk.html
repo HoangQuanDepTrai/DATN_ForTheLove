@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUÊN MẬT KHẨU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/slider_1-main/user/user-qmk.css">
+    <link rel="stylesheet" href="/slider_1-main/style.css">
+    <link rel="stylesheet" href="user-login.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg mb fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/images/logo-shop.jpg" alt="" width="55" height="50"
+                    class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">phim</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            lịch chiếu
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Phim đang chiếu</a></li>
+                            <li><a class="dropdown-item" href="#">Phim sắp chiếu</a></li>
+                            <li><a class="dropdown-item" href="#">Lịch chiếu phim hôm nay</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Phim hành động</a></li>
+                            <li><a class="dropdown-item" href="#">Phim kinh dị</a></li>
+                            <li><a class="dropdown-item" href="#">Phim tình cảm</a></li>
+                        </ul>
+                    </li>                    
+                </ul>
+                <!-- =========================SEARCH -->
+
+                <div class="InputContainer me-1">
+                    <input type="text" name="text" class="input" id="input" placeholder="Tìm kiếm phim"
+                        title="Tìm kiếm" data-toggle="tooltip" data-placement="bottom">
+                    <label for="input" class="labelforsearch">
+                        <svg viewBox="0 0 512 512" class="searchIcon">
+                            <path
+                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z">
+                            </path>
+                        </svg>
+                    </label>
+                    <div class="border"></div>
+
+                    <button class="micButton" data-bs-toggle="modal" data-bs-target="#exVoiSearch">
+                        <svg viewBox="0 0 384 512" class="micIcon">
+                            <path
+                                d="M192 0C139 0 96 43 96 96V256c0 53 43 96 96 96s96-43 96-96V96c0-53-43-96-96-96zM64 216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 89.1 66.2 162.7 152 174.4V464H120c-13.3 0-24 10.7-24 24s10.7 24 24 24h72 72c13.3 0 24-10.7 24-24s-10.7-24-24-24H216V430.4c85.8-11.7 152-85.3 152-174.4V216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 70.7-57.3 128-128 128s-128-57.3-128-128V216z">
+                            </path>
+                        </svg>
+                    </button>
+
+                </div>
+                <!-- =========================MODAL MICBUTTON -->
+                <!-- =========================MODAL MICBUTTON -->
+                <!-- =========================SEARCH -->
+                <a class="shadow__btn ms-1" href="../slider_1-main/user/user-login.html" title="Đăng nhập"
+                    data-toggle="tooltip" data-placement="bottom">
+                    <svg height="20" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.9 0-11 2-11 6v2h22v-2c0-4-7.1-6-11-6z"
+                            fill="none" stroke="#fff" stroke-width="2" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="card-login mb-3" style="width: 100%;height: auto;">
+            <div class="row g-0">
+                <div class="col-md-7">
+                    <img src="https://cdn.dribbble.com/userupload/4060830/file/original-f36227a16988f859b16895028ead7580.jpg?resize=450x338&vertical=center"
+                        class="img-fluid rounded-start w-100 h-100 custom-border-radius" alt="...">
+                </div>
+                <div class="col-md-5 mt-5">
+                    <form class="form-login">
+                        <label class="custom-tieude-login">Quên mật khẩu</label>
+                        <div class="flex-column">
+                            <label>Email cần nhập</label>
+                        </div>
+                        <div class="inputForm">
+                            <svg height="20" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.1 4H3.9C2.85 4 2 4.85 2 5.9v12.2C2 19.15 2.85 20 3.9 20h16.2c1.05 0 1.9-.85 1.9-1.9V5.9c0-1.05-.85-1.9-1.9-1.9zm0 2l-8.1 5L3.9 6h16.2zM4 18V7.98l8 4.92 8-4.92V18H4z"
+                                    fill="none" stroke="#000" stroke-width="2" />
+                            </svg>
+
+                            <input type="email" class="input" placeholder="Hãy nhập Email của bạn!">
+                        </div>
+
+                        <!-- ===========================SEND EMAIL -->
+                        <a class="btn-shine" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <span>Gửi mã</span>
+                        </a>
+                        <!-- ===========================SEND EMAIL -->
+                        <p class="p">Bạn chưa có tài khoản? 
+                           <a href="/slider_1-main/user/user-dk.html" style="text-decoration: none;"><span class="span">Đăng ký</span></a>
+                        </p>
+                        <p class="p line">Hoặc</p>
+
+                        <div class="flex-row">
+                            <button class="btn google">
+                                <svg version="1.1" width="20" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                                    style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                    <path style="fill:#FBBB00;" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256
+                        c0-42.451,10.324-82.483,28.624-117.732h0.014l57.992,10.632l25.404,57.644c-5.317,15.501-8.215,32.141-8.215,49.456
+                        C103.821,274.792,107.225,292.797,113.47,309.408z"></path>
+                                    <path style="fill:#518EF8;"
+                                        d="M507.527,208.176C510.467,223.662,512,239.655,512,256c0,18.328-1.927,36.206-5.598,53.451
+                        c-12.462,58.683-45.025,109.925-90.134,146.187l-0.014-0.014l-73.044-3.727l-10.338-64.535
+                        c29.932-17.554,53.324-45.025,65.646-77.911h-136.89V208.176h138.887L507.527,208.176L507.527,208.176z"></path>
+                                    <path style="fill:#28B446;" d="M416.253,455.624l0.014,0.014C372.396,490.901,316.666,512,256,512
+                        c-97.491,0-182.252-54.491-225.491-134.681l82.961-67.91c21.619,57.698,77.278,98.771,142.53,98.771
+                        c28.047,0,54.323-7.582,76.87-20.818L416.253,455.624z"></path>
+                                    <path style="fill:#F14336;" d="M419.404,58.936l-82.933,67.896c-23.335-14.586-50.919-23.012-80.471-23.012
+                        c-66.729,0-123.429,42.957-143.965,102.724l-83.397-68.276h-0.014C71.23,56.123,157.06,0,256,0
+                        C318.115,0,375.068,22.126,419.404,58.936z"></path>
+
+                                </svg>
+
+                                Google
+
+                            </button>
+                            <button class="btn facebook">
+                                <svg height="20" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill="#1877F2"
+                                        d="M22.675 0h-21.35c-.734 0-1.325.591-1.325 1.325v21.351c0 .733.591 1.324 1.325 1.324h11.483v-9.294h-3.116v-3.622h3.116v-2.671c0-3.1 1.893-4.788 4.658-4.788 1.325 0 2.462.099 2.794.142v3.24l-1.917.001c-1.505 0-1.798.715-1.798 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.112c.734 0 1.325-.591 1.325-1.324v-21.35c0-.734-.591-1.325-1.325-1.325z" />
+                                </svg>
+                                Facebook
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="title-otp">
+                        <img src="/images/logo-shop.jpg" alt="" width="55" height="50"
+                            class="d-inline-block align-text-top rounded-circle ">
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-otp">
+                        <div class="title-otp">OTP</div>
+                        <div class="title-otp">Mã xác minh</div>
+                        <p class="message-otp">
+                            Chúng tôi sẽ gửi mã xác minh tới Email bạn đã nhập!
+                        </p>
+                        <div class="inputs-otp">
+                            <input id="input1" type="text" maxlength="1">
+                            <input id="input2" type="text" maxlength="1">
+                            <input id="input3" type="text" maxlength="1">
+                            <input id="input4" type="text" maxlength="1">
+                            <input id="input5" type="text" maxlength="1">
+                        </div>
+                        <p class="message-otp mt-4 mb-0">
+                            <span class="underlined">Thời gian qui định</span>
+                            0:20<span class="message-otp">s</span>
+                        </p>
+                        <button class="btn-otp">
+                            <span>Xác minh</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-48201 mt-5">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1 pr-md-5">
+                    <a href="#" class="footer-site-logo d-block mb-4">
+                        <img src="/images/logo-shop.jpg" alt="" width="55" height="50"
+                            class="d-inline-block align-text-top rounded-circle ">
+                    </a>
+
+                </div>
+                <div class="col-md">
+                    <ul class="list-unstyled nav-links">
+                        <span class="ft-td-in">Mua vé xem phim</span> <br>
+                        <li class="mb-1"><a href="#" class="nd-ft">Trang chủ</a></li>
+                        <li class="mb-1"><a href="#" class="nd-ft">Phim</a></li>
+                        <li class="mb-1"><a href="#" class="nd-ft">Lịch chiếu</a></li>
+                        <li class="mb-1"><a href="#" class="nd-ft">Tài khoản</a></li>
+                        <li class="mb-1"><a href="#" class="nd-ft">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-md">
+                    <ul class="list-unstyled nav-links">
+                        <li><a href="#">Clients</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Career</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Journal</a></li>
+                    </ul>
+                </div>
+                <div class="col-md">
+                    <ul class="list-unstyled nav-links">
+                        <span class="ft-td-in">Chăm sóc khách hàng</span> <br>
+                        <p class="td-nho mt-2">Địa chỉ:
+                            <span class="nd-ft">
+                                Lầu 6, Toà nhà Phú Mỹ Hưng, số 8 Hoàng Văn Thái, khu phố 1, Phường Tân Phú, Quận 7,
+                                Thành phố Hồ Chí Minh
+                            </span>
+                        </p>
+                        <p class="td-nho">
+                            Hotline:
+                            <span class="nd-ft">0978 610 781 <span class="td-nh-nghien">(Phí 1.000đ/phút)</span></span>
+                        </p>
+                        <p class="td-nho">
+                            Email:
+                            <span class="nd-ft">
+                                forthelove@gmail.com
+                            </span>
+                        </p>
+                    </ul>
+                </div>
+                <div class="col-md text-md-center">
+                    <span class="custom-span-kn">Kết nối với chúng tôi</span>
+
+
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-12 text-center">
+                    <div class="copyright mt-5 pt-5">
+                        <p>
+                            <small style="color: deeppink;">&copy; 2019-2020 All Rights Reserved.</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- FOOTER -->
+</body>
+
+</html>

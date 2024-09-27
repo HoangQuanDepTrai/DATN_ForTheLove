@@ -1,0 +1,616 @@
+.khung {
+  padding-top: 56px;
+  margin-bottom: 5%;
+  position: relative;
+}
+
+.khung .movie-card-big {
+  font: 14px/22px "Lato", Arial, sans-serif;
+  padding: 40px 0;
+
+}
+
+
+.khung .movie-card-big .container-fluid .hero {
+  height: 500px;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: none;
+}
+
+.khung .movie-card-big .container-fluid .hero:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  /* background: url('https://c.wallhere.com/photos/0d/a6/Marvel_Comics_Marvel_Super_Heroes_looking_at_viewer_digital_art_Iron_Man_superhero_armor_glowing_eyes-2258630.jpg!d'); */
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* Đảm bảo hình ảnh lấp đầy vùng chứa */
+  background-position: center;
+  /* Hình ảnh sẽ luôn được căn giữa */
+  transform: skewY(-2.2deg);
+  transform-origin: 0 0;
+}
+
+
+.khung .movie-card-big .container-fluid .cover {
+  position: absolute;
+  top: 30%;
+  left: 40px;
+  z-index: 2;
+}
+
+.khung .hero2 {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 58%;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Thay cover bằng contain để đảm bảo giữ nguyên tỷ lệ */
+  background-position: center;
+  /* Hình ảnh sẽ luôn được căn giữa */
+  transform: skewY(-2.2deg);
+  transform-origin: 0 0;
+}
+
+
+
+.khung .movie-card-big .container-fluid .details {
+  margin-top: 1%;
+  padding: 180px 0 0 22.5%;
+
+  .title1 {    
+  	position: absolute;
+  	top: 74%;
+  	color: rgb(255, 255, 255)	;
+  	background-color: rgba(250, 90, 90, 0.8);
+  	max-width: 70%;
+  	height: 50px;
+  	padding: 15px 25px;
+    font-size: 40px;
+    border-radius: 4px;
+    margin-bottom: 13px;  
+	font-family: "Roboto",serif;
+	font-weight: 600;
+  }
+
+  .title2 {
+  position: absolute;
+  top: 66%;
+  left: 25%;
+    color: #C7C1BA;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+
+
+  .likes {
+    margin-left: 24px;
+    color: #fff;
+  }
+
+}
+
+.khung .movie-card-big .container-fluid .description {
+  height: 400px;
+  font-size: 16px;
+  line-height: 26px;
+  color: #B1B0AC;
+  margin-left: 20%;
+}
+
+
+.khung .movie-card-big .container-fluid .description .column2 {
+  padding-left: 41px;
+  padding-top: 30px;
+  margin-left: 20px;
+  width: 70%;
+  float: left;
+}
+
+
+.khung .movie-card-big .container-fluid .custom-img-chititet-phim {
+  width: 250px;
+  height: 300px;
+  position: absolute;
+  top: 25%;
+}
+
+.khung .movie-card-big .container-fluid a img {
+  width: 250px;
+  height: 300px;
+}
+
+.khung .movie-card-big .container-fluid .demo {
+  font-size: 40px;
+  color: #ff3d49;
+
+}
+
+.khung .movie-card-big .container-fluid .cover1 {
+  position: absolute;
+  color: #e6e0e0;
+  background-color: #ff3d49;
+  z-index: 3;
+  top: 48%;
+  left: 9%;
+  font-size: 40px;
+  border-radius: 100%;
+  padding: 10px;
+  border: none;
+}
+
+/* =========================================== MODAL*/
+
+.customModal_demo_chiTiet {
+  height: 100px;
+  margin: 0 auto;
+}
+
+.customModal_demo_chiTiet .modal-body {
+  position: relative;
+  padding: 0px;
+}
+
+.customModal_demo_chiTiet .btn-close {
+  position: absolute;
+  right: -30px;
+  top: 0;
+  font-size: 20px;
+
+}
+
+/* =========================================== MODAL*/
+.customModal_demo_chiTiet {
+  position: relative;
+}
+
+.customModal_demo_chiTiet .modal-content {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  /* Adds rounded corners to the modal */
+  margin-left: 13%;
+}
+
+.customModal_demo_chiTiet .modal-body {
+  height: 100px;
+  padding: 0;
+  /* Adds padding to the modal body */
+}
+
+.customModal_demo_chiTiet .modal-body iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.customModal_demo_chiTiet .modal-footer .card .col-md-4 img {
+  max-width: 40%;
+}
+
+.customModal_demo_chiTiet .modal-footer .card {
+  border: none;
+}
+
+/* ================================================================MODAL ĐẶT VÉ VÀ ĐÓNG */
+.customModal_demo_chiTiet .modal-content .modal-header .custom-btn-close {
+  border: none;
+  background: none;
+  position: absolute;
+  right: 0%;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.modal .customModal_demo_chiTiet {
+  max-width: 60%;
+  height: 600px;
+  /* Adjusts the width of the modal */
+  margin: 0;
+  margin-left: 12%;
+  /* Centers the modal horizontally */
+  position: relative;
+}
+
+.customModal_demo_chiTiet .modal-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  margin-left: 13%;
+}
+
+.customModal_demo_chiTiet .modal-content .modal-body {
+  padding: 0;
+}
+
+.khung .movie-card-big .container-fluid .description .column2 {
+  width: 80%;
+}
+
+.khung .movie-card-big .container-fluid .description .column2 .tieu-de-nho1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+
+}
+
+.khung .movie-card-big .container-fluid .description .column2 .tieu-de-nho1 p {
+  font-size: 15px;
+  font-weight: 400;
+  display: flex;
+  color: #8a8a8a;
+}
+
+.khung .movie-card-big .container-fluid .tieu-de-nho {
+  display: flex;
+  gap: 20px;
+  /* Khoảng cách giữa các phần tử */
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.khung .movie-card-big .container-fluid .tieu-de-nho .tieu-de-item p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #8a8a8a;
+}
+
+/* ====================================================SAO */
+.container .col-lg-4 .custom_td_col4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.container .col-lg-8 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+}
+
+
+/* ================================================================ */
+.container .col-lg-4 .custom-card-ct {
+  height: 150px;
+  border: none;
+}
+
+/* ================================================================ */
+.container .col-lg-4 .custom-card-ct {
+  position: relative;
+}
+
+.container .col-lg-4 .custom-card-ct img {
+  position: absolute;
+  height: 100%;
+}
+
+.container .col-lg-4 .custom-card-ct .col-md-8 {
+  position: absolute;
+  height: 100%;
+  left: 30%;
+  color: #000000;
+}
+
+.custom-card-ct {
+  transition: transform 0.3s ease-in-out;
+}
+
+.custom-card-ct:hover {
+  transform: scale(1.05);
+}
+
+
+/* ================================================================= SAO*/
+.bi-star-fill {
+  color: yellow;
+}
+
+.bi-hand-thumbs-up-fill {
+  color: #ff3d49;
+}
+
+/* ================================================================= CARD DỌC */
+
+.container .col-lg-4  .movie-card-chi-tiet {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 5px;
+  margin: 20px;
+  max-width: 600px;
+  border-bottom: 0.1px solid #d4d4d4;
+}
+
+
+
+.container .col-lg-4  .movie-poster {
+  width: 80px;
+  border-radius: 5px;
+  margin-right: 15px;
+  object-fit: cover;
+  /* Hoặc contain, fill, tùy vào nhu cầu */
+  height: 120px;
+  /* Đảm bảo ảnh sẽ phủ toàn bộ chiều cao container */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container .col-lg-4  .movie-poster:hover {
+  transform: scale(1.05);
+  /* Khi hover, thẻ sẽ to lên 5% */
+}
+
+.container .col-lg-4  .movie-info {
+  flex-grow: 1;
+}
+
+.container .col-lg-4  .movie-age-rating {
+  display: inline-block;
+  padding: 4px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 10px;
+}
+
+.container .col-lg-4  .age-18 {
+  background-color: #d9534f;
+}
+
+.container .col-lg-4  .movie-title {
+  width: 80%;
+  font-size: 16.5px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.container .col-lg-4  .movie-title:hover {
+  color: #ff3d49;
+}
+
+.container .col-lg-4  .movie-genre {
+  width: 80%;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.container .col-lg-4  .movie-rating {
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
+
+.container .col-lg-4  .star {
+  color: #ffc107;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.container .col-lg-4  a {
+  width: 25%;
+  text-align: center;
+  background-color: #d9534f;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.container .col-lg-4  a:hover {
+  background-color: #c9302c;
+}
+
+.container .col-lg-4  {
+  text-decoration: none;
+  color: #000000;
+}
+
+
+.footer-48201 {
+  padding: 7rem 0;
+  background-color: #000;
+  color: #777;
+}
+
+.footer-48201 .footer-site-logo {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.footer-48201 .nav-links li {
+  margin-bottom: 10px;
+}
+
+.footer-48201 .nav-links li a {
+  color: gray;
+}
+
+.footer-48201 .nav-links li a:hover {
+  color: #fff;
+}
+
+.footer-48201 .btn.btn-tertiary {
+  background-color: #e42c64;
+  color: #fff;
+  border-radius: 30px;
+  border: none;
+  padding: 10px 20px;
+}
+
+.footer-48201 .social li {
+  display: inline-block;
+}
+
+.footer-48201 .social li a {
+  color: gray;
+  padding: 7px;
+}
+
+.footer-48201 .social li a:hover {
+  color: #fff;
+}
+
+.footer-48201 .copyright {
+  border-top: 1px solid #404040;
+}
+
+.footer-48201 a {
+  text-decoration: none;
+}
+
+/* ========================================================BTN MORE */
+
+
+
+
+
+
+.container .box-container .box-card {
+  background-color: #fff;
+  border-radius: 5px;
+  display: none;
+  width: 260px;
+  height: 150px;
+  position: relative;
+  margin-bottom: 10%;
+  margin-right: 20px;
+}
+
+.container .box-container .box-card:hover .span-top-phim {
+  color: #ff3d49;
+}
+
+/* Đặt màu mặc định cho span */
+.container .box-container .box-card .span-top-phim {
+  font-size: 17px;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000;
+  /* Màu mặc định */
+  transition: color 0.3s ease;
+  /* Thay đổi màu sắc mượt mà */
+}
+
+
+.container .box-container .box-card .span-luot-xem {
+  font-size: 13px;
+  font-weight: 400;
+  color: #777;
+}
+
+
+
+.container .box-container .box-card:nth-child(1),
+.container .box-container .box-card:nth-child(2),
+.container .box-container .box-card:nth-child(3) {
+  display: inline-block;
+}
+
+.container .box-container .box-card .image {
+
+  margin-bottom: 20px;
+  overflow: hidden;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.container .box-container .box-card .image img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+
+
+
+
+#load-more {
+  display: inline-block;
+  padding: 15px 30px;
+  border: 1px solid #334;
+  color: #334;
+  font-size: 16px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+  /* Adjust the duration and easing function as needed */
+}
+
+#load-more:hover {
+  background-color: crimson;
+  border-color: crimson;
+  color: #fff;
+}
+
+.card-datve .col-md-10 .card-body {
+  color: #000;
+}
+.ghdt {
+  position: absolute;
+  z-index: 3;
+  top: 65%;
+  background-color: rgba(250, 90, 90, 0.8);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5%;
+  font-weight: 900;
+}
+.card-body .card-title {
+  width: 100%;
+  height: 20px;
+}
+.col-md-2 img {
+  width: 100%; /* Đặt chiều rộng là 100% để hình ảnh tự động điều chỉnh theo chiều rộng của cột */
+  height: auto; /* Tự động điều chỉnh chiều cao để giữ tỉ lệ khung hình */
+  max-height: 180px; /* Giới hạn chiều cao tối đa để không vượt quá 180px */
+  background-repeat: no-repeat;
+  object-fit: cover; /* Giữ tỉ lệ khung hình cho hình ảnh, cắt bỏ những phần không cần thiết */
+  border-radius: 5px; /* Tùy chọn: làm tròn các góc của hình ảnh */
+}
+
+#loadMoreBtn_cardPhimDangChieu {
+  border-radius: 0%;
+  border: none;
+  background-color: #d9534f;
+}
+#loadMoreBtn_cardPhimDangChieu:hover {
+  background-color: #c9302c;
+}
+
+#toggleButton, #toggleButton2 {
+	font-size: 15px;
+	font-weight: 400;
+	color: blue;
+	font-style: italic;
+}
+
+#toggleButton:hover, #toggleButton2:hover {
+	cursor: pointer;
+}
+/* ========================================================BTN MORE */
+/* ========================================================BTN MORE */
+
+/* ======================================================== */
