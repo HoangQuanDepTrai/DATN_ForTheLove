@@ -1,0 +1,124 @@
+.custom-container {
+  max-width: 900px;
+  width: 100%;
+  background-color: #f5f7fb;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  margin-left:330px;
+  height:900px;
+}
+
+.custom-container .brand {
+  width: 100%;
+  text-align: center;
+  font-size: 2.8em;
+  color: #ff3d49;
+}
+
+.custom-container .wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+.company-info,
+.contact {
+  width: 100%;
+  max-width: 450px;
+  margin-top:-50px;
+}
+
+.company-info {
+  padding: 20px;
+  border-right: 1px solid #e0e0e0;
+}
+.company-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.company-info ul li {
+  margin-bottom: 20px; /* Khoảng cách giữa các rạp */
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: block; /* Đảm bảo mỗi rạp nằm trong một khung riêng */
+}
+
+.company-info ul li h5 {
+  font-size: 1.4em;
+  color: #ff3d49;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.company-info ul li p {
+  margin: 10px 0;
+  color: #333;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.company-info ul li i {
+  margin-right: 10px;
+  color: #ff3d49;
+}
+
+
+
+.contact h3 {
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+#contact-form {
+  padding: 20px;
+}
+
+#contact-form p {
+  margin-bottom: 15px;
+}
+
+#contact-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  border-color: #3498db;
+}
+
+#contact-form .full {
+  width: 100%;
+}
+button[type="submit"] {
+  padding: 12px 20px;
+  background: #ff3d49;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #ff3d49;
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lịch Chiếu Phim</title>
+<link rel="stylesheet" href="/slider_1-main/css/style.css">
+<link rel="stylesheet" href="/slider_1-main/css/lichchieu.css">
+
+<link rel="icon" href="/slider_1-main/image/ok.png" type="image/png">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- SweetAlert CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<!-- Animate.css -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+<body>
+	<div th:replace="userViews/header:: .navbar"></div>
+	<div class="div-top" style="margin-top: 130px"></div>
+
+	<h1 style="margin-top: -80px">Lịch Chiếu Phim Từ Ngày Mai Đến 7
+		Ngày Tới</h1>
+
+	<!-- Nút Ngày Chiếu nằm ngang -->
+	<div class="schedule-buttons">
+		<th:block th:each="entry : ${showtimes}">
+			<button type="button"
+				th:data-date="${#dates.format(entry.key, 'yyyy-MM-dd')}"
+				th:onclick="'fetchShowtimes(this.dataset.date, this)'"
+				th:text="${#dates.format(entry.key, 'yyyy-MM-dd')}">Ngày
+				chiếu</button>
+		</th:block>
+	</div>
+
+	<div id="cinemas">
+		<!-- Danh sách rạp chiếu sẽ được cập nhật ở đây -->
+	</div>
+
+	<!-- Hiển thị ca chiếu khi người dùng chọn rạp -->
+	<div id="showtimes">
+		<!-- Nội dung ca chiếu sẽ được cập nhật ở đây -->
+	</div>
+
+	<div th:replace="userViews/footer:: footer"></div>
+
+	<script>
+	// Lấy danh sách các rạp chiếu khi người dùng chọn ngày
+// Lấy danh sách các rạp chiếu khi người dùng chọn ngày
+function fetchShowtimes(date, buttonElement) {
+    // Loại bỏ lớp "active" khỏi tất cả các nút ngày chiếu
+    document.querySelectorAll('.schedule-buttons button').forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Thêm lớp "active" vào nút ngày chiếu vừa được bấm
+    buttonElement.classList.add('active');
+
+    // Xóa các ca chiếu cũ khi người dùng chọn ngày mới
+    const showtimesDiv = document.getElementById('showtimes');
+    showtimesDiv.innerHTML = ''; // Xóa nội dung các ca chiếu cũ
+
+    // Lấy danh sách các rạp chiếu cho ngày đã chọn
+    fetch('/cinemas/' + date)
+    .then(response => response.json())
+    .then(data => {
+        const cinemasDiv = document.getElementById('cinemas');
+        cinemasDiv.innerHTML = ''; // Xóa nội dung cũ (cần thực hiện trước khi thêm mới)
+
+        const uniqueCinemas = new Set(); // Set để lưu trữ các rạp chiếu duy nhất
+
+        data.forEach(cinema => {
+            if (!uniqueCinemas.has(cinema.cinemaName)) {
+                uniqueCinemas.add(cinema.cinemaName);
+
+                // Tạo nút cho rạp chiếu duy nhất
+                const li = document.createElement('li');
+                li.classList.add('cinema-item');
+                const cinemaButton = document.createElement('button');
+                cinemaButton.classList.add('cinema-btn');
+                cinemaButton.textContent = cinema.cinemaName;
+                cinemaButton.onclick = function() {
+                    fetchMoviesByCinema(cinema.cinemaId, date);
+                };
+                li.appendChild(cinemaButton);
+                cinemasDiv.appendChild(li);
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Lỗi khi lấy dữ liệu rạp:', error);
+        const cinemasDiv = document.getElementById('cinemas');
+        cinemasDiv.innerHTML = '<p style="color: red;">Có lỗi xảy ra khi tải dữ liệu rạp.</p>';
+    });
+
+}
+
+
+function fetchMoviesByCinema(cinemaId, date) {
+    // Xóa các ca chiếu cũ khi chọn rạp mới
+    const showtimesDiv = document.getElementById('showtimes');
+    showtimesDiv.innerHTML = ''; // Xóa nội dung cũ
+
+    // Gọi API để lấy danh sách phim cho rạp và ngày đã chọn
+    fetch(`/movies/${cinemaId}/${date}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length > 0) {
+                const ul = document.createElement('ul'); // Tạo danh sách các phim
+
+                data.forEach(showtime => {
+                    const li = document.createElement('li');
+                    const movieName = showtime.movieName || 'Tên phim không có';
+                    const startTime = showtime.startTime || 'Thời gian không có';
+                    const endTime = showtime.endTime || 'Thời gian kết thúc không có';
+                    const image = showtime.image || 'default-image.jpg';
+                    const genre = showtime.genre || 'Thể loại không có';
+                    const ageRestriction = showtime.ageRestriction || 'Không có';
+                    const duration = showtime.duration ? `${showtime.duration} phút` : 'Không có';
+
+                    li.innerHTML = `
+                        <div style="display: flex; align-items: flex-start;" onclick="window.location.href='/index/details/${showtime.movieId}'" style="cursor: pointer;">
+                            <img src="${image}" alt="${movieName}" width="120" height="180" style="margin-right: 20px; object-fit: cover;" />
+                            <div class="showtime-right" style="display: flex; flex-direction: column; gap: 10px; text-align: left;">
+                                <a href="/index/details/${showtime.movieId}" style="text-decoration: none; color: inherit;">
+                                    <strong>${movieName}</strong>
+                                </a>
+                                <div class="time">Lúc ${startTime} - ${endTime}</div>
+                                <div class="genre">Thể loại: ${genre}</div>
+                                <div class="age">Độ tuổi: ${ageRestriction}</div>
+                                <div class="duration">Thời lượng: ${duration}</div>
+                            </div>
+                        </div>
+                    `;
+                    ul.appendChild(li);
+                });
+
+                showtimesDiv.appendChild(ul); // Thêm danh sách phim vào showtimes div
+            } else {
+                // Nếu không có phim chiếu, hiển thị thông báo không có phim
+                const li = document.createElement('li');
+                li.classList.add('no-show');
+                li.innerHTML = `
+                    <div style="text-align: center;">
+                        <img src="/slider_1-main/image/suatchieu.jpg" alt="Không có ca chiếu" style="margin-bottom: 10px;width:500px;height:300px;margin-left:300px">
+                    </div>
+                `;
+                showtimesDiv.appendChild(li); // Thêm thông báo vào showtimes div
+            }
+        })
+        .catch(error => {
+            console.error('Lỗi khi lấy dữ liệu phim:', error);
+        });
+}
+	</script>
+
+	<script src="/slider_1-main/js/help.js"></script>
+	<script src="/slider_1-main/js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <link rel="stylesheet" href="/slider_1-main/css/style.css">
+    <link rel="icon" href="/slider_1-main/image/ok.png" type="image/png">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+            rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<body>
+
+<div th:replace="userViews/header:: .navbar"></div>
+<!-- carousel -->
+
+<div class="carousel">
+    <!-- list item -->
+    <div class="list">
+        <th:block th:each="showtime : ${showtimes}">
+            <div class="item">
+                <img th:src="${showtime.image_bg}"
+                     src="https://cellphones.com.vn/sforum/wp-content/uploads/2022/03/3575769.webp">
+                <div class="content">
+                    <div class="author" th:text="${showtime.ageRestriction} + '+'">PHIM</div>
+                    <div class="title"
+                         th:text="${showtime.movieName.length() > 40 ? #strings.substring(showtime.movieName, 0, 40) + '...' : showtime.movieName}"></div>
+
+                    <!-- Thêm thể loại nếu cần -->
+                    <div class="des"
+                         th:text="${showtime.genre.length() > 25 ? #strings.substring(showtime.genre, 0, 25) + '...' : showtime.genre}"></div>
+                    <div class="buttons">
+                        <a th:href="@{/index/details/{id}(id=${showtime.movieId})}"
+                           class="button_carousel"> <span>Chi tiết</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+    </div>
+    <!-- list thumbnail -->
+    <div class="thumbnail">
+        <th:block th:each="showtime: ${showtimes}">
+            <div class="item">
+                <img th:src="${showtime.image}"
+                     src="https://cellphones.com.vn/sforum/wp-content/uploads/2022/03/3575769.webp">
+            </div>
+        </th:block>
+    </div>
+
+    <!-- next prev -->
+    <div class="arrows">
+        <button id="prev">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+        <button id="next">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- time running -->
+    <div class="time"></div>
+</div>
+<div class="modal fade" id="showtimeNotificationModal" tabindex="-1" aria-labelledby="showtimeNotificationModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <header class="modal-container-header-ShowtimeNews">
+                    <h1 class="modal-container-title-ShowtimeNews">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                             aria-hidden="true">
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path fill="currentColor"
+                                  d="M14 9V4H5v16h6.056c.328.417.724.785 1.18 1.085l1.39.915H3.993A.993.993 0 0 1 3 21.008V2.992C3 2.455 3.449 2 4.002 2h10.995L21 8v1h-7zm-2 2h9v5.949c0 .99-.501 1.916-1.336 2.465L16.5 21.498l-3.164-2.084A2.953 2.953 0 0 1 12 16.95V11zm2 5.949c0 .316.162.614.436.795l2.064 1.36 2.064-1.36a.954.954 0 0 0 .436-.795V13h-5v3.949z" />
+                        </svg>
+                        Thông báo
+                    </h1>
+                </header>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <section class="modal-container-body-ShowtimeNews rtf pb-3">
+                    <h1 class="text-center">
+                        For The Love xin thông báo về thông tin dời lịch chiếu!
+                    </h1>
+
+                    <div class="d-flex justify-content-between align-items-center mt-4"
+                         th:each="notification : ${showtimeNotifications}">
+                        <!-- Thông tin cũ -->
+                        <div class="message-items-old">
+                            <h2 th:text="${notification.movieName} + ' (Cũ)'">Thông tin Phim - Chàng Vợ Của Em (Cũ)</h2>
+                            <ol class="mb-0">
+                                <li>Ngày chiếu: <span th:text="${notification.originalShowDate}"></span></li>
+                                <li>Giờ bắt đầu và giờ kết thúc: <span th:text="${notification.originalStartTime} + ' ~ '+ ${notification.originalEndTime}"></span></li>
+                                <li>Tất cả ghế: <span>A1, A2, A3</span></li>
+                                <li>Phòng: <span>Phòng 2</span></li>
+                            </ol>
+                        </div>
+
+                        <!-- Icon mũi tên sang phải -->
+                        <div class="newShowTimes text-center mx-3">
+                            <i class="bi bi-chevron-double-right" style="font-size: 24px;"></i>
+                        </div>
+
+                        <!-- Thông tin mới -->
+                        <div class="message-items-new">
+                            <h2 th:text="${notification.movieName} + ' (Mới)'">Thông tin Phim - Chàng Vợ Của Em (Mới)</h2>
+                            <ol class="mb-0">
+                                <li>Ngày chiếu: <span th:text="${notification.currentShowDate}"></span></li>
+                                <li>Giờ bắt đầu và giờ kết thúc: <span th:text="${notification.currentStartTime} + ' ~ '+ ${notification.currentEndTime}"></span></li>
+                                <li>Tất cả ghế: <span>A1, A2, A3</span></li>
+                                <li>Phòng: <span>Phòng 4</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <p class="mt-5 mb-0 sinLoi">
+                        "Kính gửi quý khách, chúng tôi chân thành xin lỗi vì sự bất tiện do thay đổi lịch chiếu. Mong quý khách thông cảm và cảm ơn sự thấu hiểu của quý khách. Chúng tôi sẽ cố gắng mang đến trải nghiệm tốt nhất trong lần tới."
+                    </p>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button-ShowtimeNews is-primary" data-bs-dismiss="modal" aria-label="Close">
+                    Đồng ý
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+		<span class="custom-text-center mb-3" style="color: #ff3d49;">
+			Phim sắp chiếu </span>
+
+    <div class="row row-cols-2 row-cols-md-5 g-4 card-xem-them"
+         id="movie-list">
+        <!-- Danh sách phim sẽ được thêm vào đây thông qua AJAX -->
+    </div>
+
+    <div id="pagination" class="d-flex justify-content-center mt-4">
+        <!-- Pagination sẽ được tạo ra qua JavaScript -->
+    </div>
+</div>
+
+<div class="custom-background-card-sliders">
+    <h1 class="shining-text">
+        <span>Phim đang chiếu</span> <span class="star1">&#10022;</span> <span
+            class="star2">&#10023;</span> <span class="star3">&#10023;</span>
+    </h1>
+
+    <div class="wrapper">
+        <i id="left" class="fa-solid fas fa-angle-left"
+           style="margin-top: -30px"></i>
+        <th:block>
+            <ul class="carousel-khung-big ps-1 ms-1">
+                <li th:each="showtime : ${showtimes}" class="card-sliders"><span
+                        class="ghdtIndexShowtime"
+                        th:text="${showtime.ageRestriction} + '+'"></span>
+                    <div class="img">
+                        <img th:src="${showtime.image}"
+                             th:onclick="'window.location.href=\'/index/details/' + ${showtime.movieId} + '\''"
+                             style="cursor: pointer;"
+                             alt="" draggable="false">
+                    </div> <!-- Thẻ h2 trở thành liên kết --> <a
+                            th:href="@{/index/details/{id}(id=${showtime.movieId})}">
+                        <h2
+                                th:text="${showtime.movieName.length() > 40 ? #strings.substring(showtime.movieName, 0, 40) + '...' : showtime.movieName}">
+                            Cám</h2>
+                    </a> <span
+                            th:text="${showtime.genre.length() > 25 ? #strings.substring(showtime.genre, 0, 25) + '...' : showtime.genre}">Kinh
+							dị</span> <!-- Nút Đặt vé --> <a
+                            th:href="@{/index/details/{id}(id=${showtime.movieId})}"
+                            class="btn2" th:text="'Đặt vé'">Đặt vé
+                    </a>
+                </li>
+            </ul>
+        </th:block>
+        <i id="right" class="fa-solid fas fa-angle-right"
+           style="margin-top: -30px"></i>
+    </div>
+</div>
+
+
+<div class="container-fluid" style="background: #151515">
+    <div class="movie-list-container">
+        <div class="movie-list-wrapper">
+            <div class="movie-list">
+                <!-- Sử dụng th:block để lặp qua danh sách phim -->
+                <th:block th:each="movie : ${movies}">
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" th:src="${movie.image_bg}"
+                             alt="Movie Image"> <a class="movie-list-item-button"
+                                                   th:href="@{/index/details/{id}(id=${movie.movieId})}">Chi
+                        tiết </a>
+
+                    </div>
+                </th:block>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </div>
+    </div>
+
+    <!--list 2-->
+    <div class="movie-list-container">
+        <div class="movie-list-wrapper">
+            <div class="movie-list">
+                <!-- Sử dụng th:block để lặp qua danh sách phim -->
+                <th:block th:each="movie : ${movies}">
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" th:src="${movie.image}"
+                             alt="Movie Image"> <a class="movie-list-item-button"
+                                                   th:href="@{/index/details/{id}(id=${movie.movieId})}">Chi
+                        tiết </a>
+
+                    </div>
+                </th:block>
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-3">
+		<span class="custom-text-center mb-3" style="color: #ff3d49;">Phim
+			đang chiếu</span>
+    <div class="row row-cols-2 row-cols-md-5 g-4 card-xem-them">
+        <!-- Loop qua danh sách phim từ backend -->
+        <th:block th:each="showtime : ${showtimes}">
+            <div class="col">
+                <div class="card movie_card">
+                    <span class="ghdtIndex" th:text="${showtime.ageRestriction}+'+'"></span>
+                    <img th:src="${showtime.image}" class="card-img-top"
+                         alt="Movie Image">
+                    <div class="card-body">
+                        <h5 class="card-title m-0 mb-2"
+                            th:text="${showtime.movieName.length() > 40 ? #strings.substring(showtime.movieName, 0, 40) + '...' : showtime.movieName}">
+                            Tên</h5>
+                        <span class="card-theLoai mt-2"
+                              th:text="${showtime.genre.length() > 25 ? #strings.substring(showtime.genre, 0, 25) + '...' : showtime.genre}">Thể
+								loại phim</span> <br> <a
+                            th:href="@{/index/details/{id}(id=${showtime.movieId})}"
+                            class="custom-btn-datve mt-3"> <span>Chi tiết</span>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
+
+    </div>
+</div>
+
+<div th:replace="userViews/footer:: footer"></div>
+<!-- FOOTER -->
+<script>
+    // Hàm tải danh sách phim với AJAX
+    function loadMovies(page) {
+        $.ajax({
+            url: '/index/api/movies?page=' + page + '&size=10', // API phân trang
+            type: 'GET',
+            success: function(response) {
+                // Xóa nội dung hiện tại trong danh sách phim
+                $('#movie-list').empty();
+
+                // Thêm các phim vào danh sách
+                response.movies.forEach(function(movie) {
+                    // Giới hạn độ dài tên phim và thể loại
+                    var movieName = movie.movieName.length > 40 ? movie.movieName.substring(0, 40) + '...' : movie.movieName;
+                    var genre = movie.genre.length > 25 ? movie.genre.substring(0, 25) + '...' : movie.genre;
+
+                    $('#movie-list').append(`
+                    <div class="col">
+                        <div class="card movie_card">
+                            <span class="ghdtIndex">${movie.ageRestriction}+</span>
+                            <img src="${movie.image}" class="card-img-top" alt="Movie Image">
+                            <div class="card-body">
+                                <h5 class="card-title m-0 mb-2">${movieName}</h5>
+                                <span class="card-theLoai mt-2">${genre}</span>
+                                <br>
+                                <a href="/index/details/${movie.movieId}" class="custom-btn-datve mt-3">
+                                    <span>Chi tiết</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                });
+
+                // Cập nhật phân trang
+                updatePagination(response.totalPages, page);
+            }
+        });
+    }
+
+    function updatePagination(totalPages, currentPage) {
+        $('#pagination').empty();
+
+        // Thêm nút "Đầu"
+        $('#pagination').append(`<button class="pagination-btn first-last" onclick="loadMovies(0)">Đầu</button>`);
+
+        // Thêm các nút trang (tránh việc có quá nhiều nút, chỉ hiển thị tối đa 5 nút trang quanh trang hiện tại)
+        let startPage = Math.max(0, currentPage - 2); // Trang bắt đầu
+        let endPage = Math.min(totalPages - 1, currentPage + 2); // Trang kết thúc
+
+        for (let i = startPage; i <= endPage; i++) {
+            if (i === currentPage) {
+                $('#pagination').append(`<button class="pagination-btn active">${i + 1}</button>`);
+            } else {
+                $('#pagination').append(`<button class="pagination-btn" onclick="loadMovies(${i})">${i + 1}</button>`);
+            }
+        }
+
+        // Thêm nút "Cuối"
+        $('#pagination').append(`<button class="pagination-btn first-last" onclick="loadMovies(${totalPages - 1})">Cuối</button>`);
+    }
+
+    // Tải trang đầu tiên khi trang được tải
+    $(document).ready(function() {
+        loadMovies(0); // Tải phim trang đầu tiên
+    });
+</script>
+<script th:inline="javascript">
+    // Chuyển đổi showtimeNotifications thành mảng JSON
+    var showtimeNotifications = /*[[${showtimeNotifications}]]*/ [];
+
+    // Nếu có thông báo dời lịch chiếu, mở modal
+    if (showtimeNotifications.length > 0) {
+        var myModal = new bootstrap.Modal(document.getElementById('showtimeNotificationModal'));
+        myModal.show();
+    }
+</script>
+<style>
+    /* Chiều rộng modal */
+    .modal-dialog {
+        max-width: 70%;
+        transition: all 0.3s ease; /* Hiệu ứng chuyển động cho modal */
+    }
+
+    /* Tiêu đề modal */
+    .modal-header {
+        background-color: #ffffff; /* Màu nền header */
+        color: #333; /* Màu chữ tối */
+        padding: 20px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .modal-title {
+        font-size: 1.7rem;
+        font-weight: bold;
+    }
+
+    /* Nội dung modal */
+    /* Nội dung modal */
+    .modal-body {
+        background-color: white;
+        color: #333;
+        font-size: 1.1rem;
+        padding: 25px;
+        border-radius: 16px; /* Bo góc 16px */
+        animation: fadeIn 0.5s ease; /* Hiệu ứng chuyển động */
+        overflow: hidden; /* Ngăn tràn nội dung */
+    }
+
+
+    /* Footer modal */
+    .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        background-color: #ffffff;
+        padding: 15px;
+        border-top: 1px solid #ddd;
+    }
+
+    /* Nút đóng và đồng ý */
+    .btn-close {
+        color: #aaa;
+        font-size: 1.5rem;
+        margin-right: auto; /* Đẩy nút đóng sang trái */
+    }
+
+
+    /* Hiệu ứng fade-in cho modal */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/slider_1-main/js/app.js"></script>
+<script src="/slider_1-main/js/help.js"></script>
+<script src="/slider_1-main/js/search.js"></script>
+</body>
+
+</html>

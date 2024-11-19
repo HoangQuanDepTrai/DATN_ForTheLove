@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách hóa đơn</title>
+    <link rel="icon" href="/slider_1-main/image/ok.png" type="image/png">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            position: relative; /* Để có thể định vị các phần tử con */
+            color: white; /* Thay đổi màu chữ để dễ đọc hơn trên nền */
+        }
+
+        /* Đặt img làm nền */
+        .background-img {
+            position: fixed; /* Giữ hình nền cố định khi cuộn */
+            top: 0;
+            left: 0;
+            width: 100%; /* Đảm bảo phủ kín chiều rộng */
+            height: 100%; /* Đảm bảo phủ kín chiều cao */
+            z-index: -1; /* Đưa hình ảnh về phía dưới cùng */
+            opacity: 0.5; /* Thiết lập độ mờ của hình nền, có thể điều chỉnh tùy ý */
+        }
+
+    </style>
+</head>
+<body>
+<img src="your-background-image-url.jpg" alt="Background" class="background-img">
+<!-- Thay thế với URL hình ảnh của bạn -->
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4" style="color: #00c40a">Danh Sách Hóa Đơn</h1>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Account ID</th>
+            <th>Account Username</th>
+            <th>Promotion ID</th>
+            <th>Showtime ID</th>
+            <th>Total Amount</th>
+            <th>Khách hàng</th>
+            <th>Thời gian đặt</th>
+            <th>Ngày đặt</th>
+            <th>Products</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="invoice : ${invoices}">
+            <td th:text="${invoice.account.accountId}"></td>
+            <td th:text="${invoice.account.username}"></td>
+            <td th:text="${invoice.promotion.promotionId}"></td>
+            <td th:text="${invoice.showtime.showtimeId}"></td>
+            <td th:text="${invoice.totalAmount}"></td>
+            <td th:text="${invoice.account.fullName}"></td>
+            <td th:text="${invoice.bookingTime}"></td>
+            <td th:text="${invoice.bookingDate}"></td>
+            <td>
+                <table class="table table-sm">
+                    <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="detail : ${invoice.invoiceDetails}">
+                        <td th:text="${detail.product.productId}"></td>
+                        <td th:text="${detail.product.productName}"></td>
+                        <td th:text="${detail.quantity}"></td>
+                        <td th:text="${detail.price}"></td>
+                        <td th:text="${detail.totalPrice}"></td>
+                        <td>
+                            <img src="https://cdn.tgdd.vn/hoi-dap/1309185/ma-qr-code-la-gi-dung-de-lam-gi-cach-tao-ma-qr-nhanh-chong%20(1).jpg"
+                                 alt="Mô tả hình ảnh" width="300" height="200">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

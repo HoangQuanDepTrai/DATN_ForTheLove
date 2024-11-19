@@ -1,0 +1,358 @@
+
+.background-img-datVe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.container {
+    color: #ffffff;
+}
+
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seat-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.seat {
+    width: 50px;
+    height: 50px;
+    background-color: #6c63ff;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+    outline: none;
+}
+
+.seat-small {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    cursor: default;
+    margin-right: 10px;
+}
+
+.seat.selected {
+    background-color: #00c40a;
+    color: #fff;
+}
+
+.seat.vip {
+    background-color: #e00000;
+}
+
+.seat.vip.selected {
+    background-color: #009e08;
+}
+
+.seat.disabled {
+    background-color: #777777;
+    color: #000;
+    cursor: not-allowed;
+}
+
+.screen {
+    background-color: #888888;
+    height: 50px;
+    margin: 20px 0;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+}
+
+.separator {
+    background-color: #ffffff;
+    width: 1px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seat-booked {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
+
+.seat-vip {
+    background-color: red;
+    color: white;
+}
+
+.seat-selected {
+    background-color: #00c40a;
+    color: white;
+}
+
+/* Điều chỉnh chú thích dọc */
+.legend-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#selectedSeatsDisplay {
+    padding: 10px;
+    border-radius: 15px; /* Tạo bo góc */
+    border: 2px solid #ff4971; /* Tạo viền với màu sắc nổi bật */
+    background-color: rgba(255, 255, 255, 0.1); /* Tạo màu nền mờ */
+}
+
+.datveSpanVND {
+    display: flex;
+    /* Sử dụng flexbox để đặt các phần tử trong cùng một hàng */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    color: #FF00CC
+}
+
+.datVeFont {
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif; /* Thiết lập font chữ Arial */
+}
+.datVeFontName {
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif; /* Thiết lập font chữ Arial */
+}
+
+.spanVND {
+    margin-left: 2px;;
+}
+
+.btnDatVe-seat {
+    padding: 10px 15px;
+    border: none;
+    background: #ff4971;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    /* Hiệu ứng chuyển màu mượt hơn */
+}
+
+.btnDatVe-seat:hover {
+    background: #e94266; /* Màu đậm hơn khi hover */
+}
+
+.btnDatVe-seat:active {
+    background: #d63b5b; /* Màu đậm hơn khi nhấn */
+}
+
+#seatMapContainer {
+    background-color: rgba(62, 62, 62, 0.559);
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+.modal-dialog-datVe {
+    max-width: 800px; /* Giới hạn chiều rộng của modal */
+    margin: 0 auto; /* Căn giữa modal */
+}
+
+.modal-body-datVe {
+    max-height: 70vh; /* Giới hạn chiều cao của nội dung modal */
+    overflow-y: auto; /* Cho phép cuộn dọc */
+    padding: 15px; /* Thêm padding để không bị dính vào viền */
+}
+
+.modal-content-datVe {
+    margin-top: 30px;
+}
+
+.modal-body-datVe {
+    margin-top: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.modal-body-datVe > .draggable-content + .draggable-content {
+    border-top: 1px solid #ddd;
+}
+
+.modal-body-datVe > .draggable-content:last-of-type {
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-footer {
+    display: flex; /* Sử dụng flexbox để sắp xếp các nút nằm ngang */
+    justify-content: flex-end; /* Căn phải các nút */
+    padding: 5px; /* Thêm padding nếu cần */
+}
+
+.modal-footer button {
+    margin: 0 5px; /* Thêm khoảng cách giữa các nút */
+    padding: 2px 6px; /* Giảm kích thước của nút */
+    font-size: 14px; /* Giảm kích thước chữ */
+    width: 100px; /* Điều chỉnh lại chiều rộng */
+    border: none;
+}
+
+.modal-footer button:hover {
+    border: none;
+}
+
+#confirmCombo {
+    background-color: #ff4971; /* Màu nền bình thường */
+    border: none; /* Bỏ viền */
+    outline: none; /* Bỏ khung viền khi nhấn */
+    transition: background-color 0.2s; /* Thêm hiệu ứng chuyển màu */
+}
+
+#confirmCombo:active {
+    background-color: #e63946; /* Màu nền khi nhấn (đậm hơn một chút) */
+    outline: none; /* Bỏ khung viền khi nhấn */
+}
+
+#confirmCombo:hover {
+    background-color: #e63946; /* Màu nền khi nhấn (đậm hơn một chút) */
+}
+
+#totalAmount {
+    margin: 0 1%;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#backButton {
+    position: absolute;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#backButton i {
+    font-size: 30px;
+}
+
+#backButton:hover {
+    transform: scale(1.1); /* Nút to ra khi hover */
+}
+
+#backButton::after {
+    content: "Trở về"; /* Chú thích */
+    position: absolute;
+    top: 50%; /* Căn giữa theo chiều dọc so với nút */
+    right: 120%; /* Hiển thị bên trái nút */
+    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+    background-color: white; /* Nền trắng */
+    color: black; /* Màu chữ đen */
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng cho chú thích */
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap; /* Giữ chữ nằm ngang */
+    transition: opacity 0.3s ease;
+}
+
+#backButton:hover::after {
+    opacity: 1; /* Hiện chú thích khi hover */
+}
+
+.custom-font-alert {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+}
+
+.custom-title-font {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+    font-size: 25px; /* Điều chỉnh kích thước font chữ nhỏ hơn */
+    font-weight: 500;
+}
+
+#comboModal {
+    margin: 0 auto;
+}
+
+.customProduct_title {
+    color: #ff4971;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+
+/*  nút tăng giảm số lượng*/
+
+
+.btn-increase,
+.btn-decrease {
+    width: 30px; /* Đặt chiều rộng cho nút */
+    height: 30px; /* Đặt chiều cao cho nút */
+    border-radius: 500px; /* Bo góc */
+    font-size: 20px; /* Kích thước chữ */
+    margin-top: 5px;
+    line-height: 10px; /* Căn giữa chữ theo chiều dọc */
+    display: flex; /* Sử dụng flexbox */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    background-color: transparent; /* Thay đổi màu nền nếu cần */
+    border: 2px solid #ff3d49; /* Viền xám ban đầu */
+    cursor: pointer; /* Thay đổi con trỏ khi hover */
+    transition: background-color 0.3s, border 0.3s; /* Thêm hiệu ứng chuyển đổi */
+    color: #ff3d49;
+}
+
+
+/* Để đảm bảo nút không có outline và border khi có lớp btn-outline-secondary */
+.btn-outline-secondary:focus,
+.btn-outline-secondary:active {
+    outline: none; /* Không hiển thị viền ngoài khi nút được chọn hoặc nhấn */
+    box-shadow: none; /* Bỏ bỏ bóng (nếu có) */
+    color: #fff;
+}
+
+.comboQuantity {
+    text-align: center; /* Căn giữa nội dung */
+    width: 60px; /* Đặt chiều rộng cho ô nhập */
+    margin: 0 10px; /* Khoảng cách giữa ô nhập và nút */
+    color: #af0c2c;
+}
+
+.d-flex {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.mb-3 {
+    margin-bottom: 1rem; /* Khoảng cách phía dưới */
+}
+.btnXacNhan {
+    background: #58ba45;
+    color: #fff;
+}
+.btnXacNhan:hover {
+    color: #fff;
+}
+.list-unstyled li span {
+    color: #f4caca;
+}

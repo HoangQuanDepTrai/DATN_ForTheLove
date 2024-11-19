@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quên mật khẩu</title>
+<link rel="stylesheet" href="/slider_1-main/css/style.css">
+<link rel="icon" href="/slider_1-main/image/ok.png" type="image/png">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- SweetAlert CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<!-- Animate.css -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="/slider_1-main/css/user-qmk.css">
+<link rel="stylesheet" href="/css/user-login.css">
+</head>
+
+<body>
+	<div th:replace="userViews/header:: .navbar"></div>
+	<div class="div-top"></div>
+
+	<div class="container mt-5">
+		<div class="card-login mb-3" style="width: 100%; height: auto;">
+			<div class="row g-0">
+				<div class="col-md-7">
+					<img
+						src="https://cdn.dribbble.com/userupload/4060830/file/original-f36227a16988f859b16895028ead7580.jpg?resize=450x338&vertical=center"
+						class="img-fluid rounded-start w-100 h-100 custom-border-radius"
+						alt="...">
+				</div>
+				<div class="col-md-5 mt-5">
+
+					<form class="form-login" th:action="@{/forgot-password}"
+						method="post">
+
+						<!-- Cập nhật action đến phương thức xử lý quên mật khẩu -->
+						<label class="custom-tieude-login" th:text="'Quên mật khẩu'">Quên
+							mật khẩu</label>
+						<div class="alert-container">
+							<th:block th:if="${message != null}">
+								<div class="custom-alert custom-success show"
+									th:text="${message}">
+									<i class="fas fa-check-circle"></i> <span
+										th:text="'Đổi mật khẩu thành công!'"></span>
+								</div>
+							</th:block>
+							<th:block th:if="${error != null}">
+								<div class="custom-alert custom-danger show">
+									<i class="fas fa-exclamation-triangle"></i> <span
+										th:text="${error}"></span>
+								</div>
+							</th:block>
+						
+							
+							<div th:if="${kochonhap}" class="custom-alert custom-danger show">
+								<i class="fas fa-exclamation-triangle"></i> <span
+									th:text="'Bạn đã yêu cầu đổi mật khẩu 3 lần trong ngày. Vui lòng quay lại vào ngày mai!'"></span>
+							</div>
+							<th:block th:if="${emailempty != null}">
+								<div class="custom-alert custom-danger show">
+									<i class="fas fa-exclamation-triangle"></i> <span
+										th:text="${emailempty}"></span>
+									<!-- Bạn có thể thay đổi icon ở đây -->
+								</div>
+							</th:block>
+
+							<th:block th:if="${remainingAttempts != null}">
+								<div class="custom-alert custom-success show" role="alert">
+									<i class="fas fa-check-circle"></i> <span
+										th:if="${remainingAttempts > 0}"
+										th:text="'Bạn còn ' + ${remainingAttempts} + ' lần yêu cầu đổi mật khẩu trong ngày.'"></span>
+									<span th:if="${remainingAttempts == 0}"
+										th:text="'Bạn đã hết số lần yêu cầu đổi mật khẩu trong ngày. Hãy thử lại vào ngày mai.'"></span>
+								</div>
+							</th:block>
+
+						</div>
+						<div class="flex-column">
+							<label th:text="'Email cần nhập'">Email cần nhập</label>
+						</div>
+						<div class="inputForm">
+							<svg height="20" width="20" viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg">
+            <path
+									d="M20.1 4H3.9C2.85 4 2 4.85 2 5.9v12.2C2 19.15 2.85 20 3.9 20h16.2c1.05 0 1.9-.85 1.9-1.9V5.9c0-1.05-.85-1.9-1.9-1.9zm0 2l-8.1 5L3.9 6h16.2zM4 18V7.98l8 4.92 8-4.92V18H4z"
+									fill="none" stroke="#000" stroke-width="2" />
+        </svg>
+
+							<input type="email" name="email" class="input"
+								th:placeholder="'Hãy nhập email của bạn'">
+							<!-- Thêm name và required -->
+						</div>
+
+						<!-- ===========================SEND EMAIL -->
+						<button type="submit" class="btn-shine">
+							<!-- Cập nhật thành button submit -->
+							<span th:text="'Gửi mã'">Gửi mã</span>
+						</button>
+						<p class="p">
+							<span th:text="'Bạn đã có tài khoản?'">Bạn đã có tài
+								khoản?</span> <a th:href="@{/register}" style="text-decoration: none;">
+								<span class="span" th:text="'Đăng ký /'">Đăng ký</span>
+							</a> <a th:href="@{/login}" style="text-decoration: none;"> <span
+								class="span" th:text="'Đăng nhập'">/ Đăng nhập</span>
+							</a>
+						</p>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- FOOTER -->
+	<div th:replace="userViews/footer:: footer"></div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script src="/slider_1-main/js/help.js"></script>
+	<script src="/slider_1-main/js/search.js"></script>
+	<script src="/slider_1-main/js/lang.js"></script>
+
+	<!-- FOOTER -->
+</body>
+
+</html>

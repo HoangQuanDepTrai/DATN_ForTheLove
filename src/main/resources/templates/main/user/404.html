@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Không tìm thấy</title>
+    <link rel="icon" href="/slider_1-main/image/ok.png" type="image/png">
+    
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0e68c;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 50px; /* Tăng padding lên 50px để khung cao hơn */
+            margin-top: -60px; /* Di chuyển khung lên trên bằng margin âm */
+            border: 2px dashed #ff6347;
+            border-radius: 15px;
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 80px;
+            color: #ff6347;
+            margin: 0;
+        }
+
+        .highlight {
+            font-size: 28px; /* Tăng kích thước chữ */
+            font-weight: bold; /* Đậm chữ */
+            color: #d9534f; /* Màu sắc nổi bật */
+            margin: 20px 0; /* Khoảng cách trên và dưới */
+            padding: 10px; /* Khoảng cách bên trong */
+            border: 1px solid #d9534f; /* Đường viền */
+            border-radius: 5px; /* Bo góc */
+            background-color: #fff3f3; /* Màu nền */
+        }
+
+        p {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #28a745;
+            padding: 15px 30px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            font-size: 18px;
+        }
+
+        a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>404</h1>
+    <p class="highlight" th:text="${Message}"></p>
+    <p th:text="${errorContent}"></p>
+    <br>
+    <br>
+    <a href="/index">Quay về trang chủ</a>
+</div>
+
+</body>
+</html>

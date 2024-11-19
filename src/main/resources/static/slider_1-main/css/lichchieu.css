@@ -1,0 +1,198 @@
+/* Tiêu đề */
+h1, h2 {
+    text-align: center;
+    color: #ff3d49;
+    font-size: 36px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+/* Nút "Ngày Chiếu" nằm ngang */
+.schedule-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    margin-top:30px;
+}
+
+.schedule-buttons button {
+    padding: 14px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius:25px;
+    border: none;
+    background: #ff3d49;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 160px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.schedule-buttons button:hover {
+    background: #bd081c;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.schedule-buttons button.active {
+    background: #bd081c; /* Màu nổi bật cho nút được chọn */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Tạo hiệu ứng đổ bóng */
+    color: white;
+    font-weight: bold;
+}
+/* Phần hiển thị ca chiếu */
+#showtimes {
+    margin: 30px auto;
+    width: 80%;
+    text-align: center;
+}
+
+#showtimes ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#showtimes li {
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    margin: 15px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#showtimes li:hover {
+    background: linear-gradient(135deg, #f9f9f9, #f1f1f1);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#showtimes li strong {
+    font-size: 20px;
+    color: #333;
+}
+
+#showtimes li .time {
+    font-size: 16px;
+    color: #888;
+}
+
+/* Hình ảnh phim */
+#showtimes li img {
+    border-radius: 12px;
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    margin-left: 20px;
+}
+
+/* Thông báo không có ca chiếu */
+#showtimes li.no-show {
+    background-color: white;
+    color: #f44336;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Gradient nền cho trang */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Đỉnh trang để thêm khoảng cách cho header cố định */
+.div-top {
+    height: 50px;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+    #showtimes {
+        width: 90%;
+    }
+
+    h1, h2 {
+        font-size: 30px;
+    }
+
+    .schedule-buttons button {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    #showtimes li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #showtimes li img {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100px;
+        height: 150px;
+    }
+}
+/* CSS cho các nút Cinema */
+#cinemas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.cinema-item {
+    list-style: none;
+}
+
+.cinema-btn {
+    padding: 10px 20px; /* Căn chỉnh kích thước nút */
+    font-size: 16px; /* Kích thước chữ */
+    border: none;
+    background-color: #ff3d49;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển màu */
+}
+.cinema-btn:hover {
+    background-color: #bd081c; /* Màu nền khi hover */
+    transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+.cinema-btn.active {
+    background-color: #bd081c; /* Màu khi nút được chọn */
+    border-color: #28a745;
+}
+
+.cinema-btn:focus {
+    outline: none; /* Loại bỏ viền focus mặc định */
+}
+
+/* Thêm các hiệu ứng cho danh sách rạp */
+#cinemas ul {
+    display: flex; /* Sử dụng flexbox để sắp xếp các phần tử theo hàng ngang */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    list-style-type: none; /* Xóa dấu chấm đầu dòng */
+    padding: 0; /* Xóa padding mặc định */
+    margin: 0; /* Xóa margin mặc định */
+    justify-content: center; /* Căn giữa các nút */
+}
+
+#cinemas li {
+    display: inline-block; /* Hiển thị các phần tử <li> theo kiểu inline-block để sắp xếp ngang */
+}

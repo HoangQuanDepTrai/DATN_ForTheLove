@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Danh sách hóa đơn</title>
+<link rel="icon" href="/slider_1-main/image/ok.png" type="image/png">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link rel="stylesheet" href="/slider_1-main/css/style.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+
+<style>
+table.table th, table.table td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+body {
+	color: black;
+}
+
+.btnAction:hover {
+	border: none;
+}
+#backButton {
+  color: #ff3d49; /* Màu sắc của biểu tượng */
+  font-size: 1.5rem;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s; /* Chỉ áp dụng hiệu ứng với màu và scale */
+  background-color: transparent; /* Bỏ nền */
+}
+
+#backButton:hover {
+  transform: scale(1.1);
+}
+
+#backButton:focus {
+  outline: none;
+}
+</style>
+</head>
+
+
+<body>
+	<div class="container mt-4">
+		<div class="header-ok"
+			style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+			<a id="backButton" th:href="@{/index}">
+				<i class="bi bi-chevron-double-left"></i>
+			</a>
+			<h1 class="text-center mb-0" style="margin-right:430px">📋 Danh Sách Hóa Đơn</h1>
+		</div>
+
+
+		<table id="myTable" class="table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>STT</th>
+					<th>Tên phim</th>
+					<th>Thời gian chiếu</th>
+					<th>Phòng chiếu</th>
+					<th>Ngày thanh toán</th>
+					<th>Tổng tiền</th>
+					<th>Trạng thái</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="invoice, iterStat : ${invoices}">
+					<td th:text="${iterStat.index + 1}"></td>
+					<td th:text="${invoice.showtime.movie.movieName}"></td>
+					<td
+						th:text="${invoice.showtime.startTime} + ' - ' + ${invoice.showtime.endTime}"></td>
+					<td th:text="${invoice.showtime.room.roomName}"></td>
+					<td
+						th:text="${invoice.bookingDate} + ', ' + ${invoice.bookingTime}"></td>
+					<td class="amount" th:text="${invoice.totalAmount}"></td>
+					<td th:text="${invoice.status}"></td>
+					<td>
+						<button class="btn btnAction"
+							style="background-color: #ff4971; color: #ffff"
+							data-toggle="modal"
+							th:data-target="'#ticketsModal-' + ${invoice.invoiceId}">Xem
+							Thêm</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div th:each="invoice : ${invoices}">
+			<div class="modal fade"
+				th:id="'ticketsModal-' + ${invoice.invoiceId}" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered"
+					style="max-width: 80%;" role="document">
+					<div class="modal-content">
+						<div class="modal-header " style="background-color: #ff4971">
+							<h5 class="modal-title" style="color: #fff">Thông tin hóa
+								đơn</h5>
+							<button type="button" class="close text-white"
+								data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="row mb-4">
+								<div class="col-md-4 text-center">
+									<img th:if="${qrCodeMap[invoice.invoiceId] != null}"
+										th:src="'data:image/png;base64,' + ${qrCodeMap[invoice.invoiceId]}"
+										alt="QR Code" style="width: 200px; height: 200px;">
+									<p>
+										Invoice ID: <span th:text="${invoice.invoiceId}"></span>
+									</p>
+								</div>
+								<div class="col-md-8">
+									<h5 style="color: black">Danh sách vé</h5>
+									<table class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>STT</th>
+												<th>Tên ghế</th>
+												<th>Phòng</th>
+												<th>Tên rạp</th>
+												<th>Địa chỉ</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="ticket, ticketStat : ${invoice.tickets}">
+												<td th:text="${ticketStat.index + 1}"></td>
+												<td th:text="${ticket.seat.seatName}"></td>
+												<td th:text="${ticket.seat.room.roomName}"></td>
+												<td
+													th:text="${ticket.invoice.showtime.cinemaInformation.cinemaName}"></td>
+												<td
+													th:text="${ticket.invoice.showtime.cinemaInformation.address}"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+
+
+							<!-- Hiển thị bảng nếu có sản phẩm -->
+							<div
+								th:if="${invoice.invoiceDetails != null and !invoice.invoiceDetails.isEmpty()}">
+								<h5 style="color: black">Danh sách sản phẩm</h5>
+								<table class="table table-bordered table-striped">
+									<thead>
+										<tr>
+											<th>STT</th>
+											<th>Sản phẩm</th>
+											<th>Số lượng</th>
+											<th>Đơn giá</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr
+											th:each="invoiceDetail, detailStat : ${invoice.invoiceDetails}">
+											<td th:text="${detailStat.index + 1}"></td>
+											<td th:text="${invoiceDetail.product.productName}"></td>
+											<td th:text="${invoiceDetail.quantity}"></td>
+											<td class="amount" th:text="${invoiceDetail.price}"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<h5 style="color: black">Thông Tin Phim</h5>
+							<table class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th>Tên phim</th>
+										<th>Thời lượng</th>
+										<th>Đạo diễn</th>
+										<th>Thể loại</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td th:text="'1'"></td>
+										<td th:text="${invoice.showtime.movie.movieName}"></td>
+										<td th:text="${invoice.showtime.movie.duration + ' phút'}"></td>
+										<td th:text="${invoice.showtime.movie.director}"></td>
+										<td th:text="${invoice.showtime.movie.genre}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const amountElements = document.querySelectorAll('.amount');
+        amountElements.forEach(el => {
+            const amount = parseInt(el.innerText);
+            el.innerText = formatCurrencyVND(amount);
+        });
+    });
+
+    function formatCurrencyVND(amount) {
+        return new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'}).format(amount).replace('₫', 'VNĐ');
+    }
+
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            language: {
+                sLengthMenu: "Hiển thị _MENU_ mục",
+                sZeroRecords: "Không tìm thấy kết quả",
+                sInfo: "Đang hiển thị _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                sInfoEmpty: "Không có mục nào",
+                sInfoFiltered: "(tìm kiếm từ _MAX_ mục)",
+                sSearch: "Tìm kiếm:",
+                sLoadingRecords: "Đang tải...",
+                oPaginate: {
+                    sFirst: "Đầu tiên",
+                    sLast: "Cuối cùng",
+                    sNext: "Tiếp theo",
+                    sPrevious: "Trước"
+                }
+            }
+        });
+    });
+</script>
+
+	<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+</body>
+</html>

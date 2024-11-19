@@ -1,0 +1,136 @@
+<div class="loader-template" th:each="movie : ${movies}">
+    <template id="loader-template">
+        <style>
+            .loader {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                display: grid;
+                place-items: center; /* Căn giữa theo cả chiều dọc và ngang */
+                z-index: 10; /* Đặt z-index cho loader */
+                opacity: 1; /* Thiết lập độ mờ ban đầu */
+                transition: opacity 0.5s ease; /* Thay đổi tốc độ mờ thành 0.5 giây */
+            }
+
+            /* Lớp phủ màu đen */
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5); /* Màu đen với độ trong suốt 50% */
+                z-index: 20; /* Đặt z-index cao hơn loader để nằm trên nó */
+            }
+
+            @keyframes fadeInScale {
+                0% {
+                    opacity: 0; /* Bắt đầu với độ mờ bằng 0 */
+                    transform: scale(0.5); /* Bắt đầu với kích thước nhỏ */
+                }
+                30% {
+                    opacity: 1; /* Độ mờ bằng 1 tại giữa animation */
+                    transform: scale(1.4); /* Tăng kích thước lên 40% */
+                }
+                50% {
+                    opacity: 1; /* Giữ độ mờ bằng 1 */
+                    transform: scale(1); /* Giảm kích thước về 80% */
+                }
+                80% {
+                    opacity: 1; /* Giữ độ mờ bằng 1 */
+                    transform: scale(5); /* Tăng kích thước lên gấp đôi */
+                }
+                100% {
+                    opacity: 1; /* Giữ độ mờ bằng 1 */
+                    transform: scale(20); /* Tăng kích thước lên gấp đôi */
+                }
+            }
+
+            .spinner {
+                background-image: linear-gradient(rgb(186, 66, 255) 35%, rgb(0, 225, 255));
+                width: 100px;
+                height: 100px;
+                animation: fadeInScale 1.5s ease-in-out; /* Sử dụng animation mới và chỉ chạy một lần */
+                border-radius: 50px;
+                filter: blur(1px);
+                box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);
+                position: relative;
+                z-index: 30;
+            }
+
+            .spinner1 {
+                background-color: rgb(36, 36, 36);
+                width: 100px;
+                height: 100px;
+                border-radius: 50px;
+                filter: blur(10px);
+                z-index: 40; /* Đặt z-index cao nhất cho spinner1 */
+            }
+
+            .loading-text {
+                position: absolute; /* Đặt vị trí tuyệt đối để căn giữa */
+                color: white; /* Đặt màu chữ */
+                font-weight: bold; /* Đặt kiểu chữ đậm */
+                z-index: 500; /* Đặt z-index cao hơn để chữ nằm trên spinner */
+                display: flex; /* Sử dụng flex để căn giữa chữ "Loading" */
+                align-items: center; /* Căn giữa theo chiều dọc */
+                justify-content: center; /* Căn giữa theo chiều ngang */
+                width: 1000px; /* Đặt chiều rộng bằng với spinner */
+                height: 100px; /* Đặt chiều cao bằng với spinner */
+            }
+
+            .hidden {
+                opacity: 0; /* Đặt độ mờ bằng 0 */
+                transition: opacity 0.5s ease; /* Thay đổi tốc độ mờ thành 0.5 giây */
+                pointer-events: none; /* Ngăn chặn sự tương tác với loader khi nó bị ẩn */
+            }
+
+            /* Kiểu cho hình ảnh */
+            .loader img {
+                width: 100%; /* Đặt chiều rộng hình ảnh chiếm toàn bộ lớp loader */
+                height: auto; /* Đảm bảo tỉ lệ hình ảnh không bị méo */
+                position: absolute; /* Đặt hình ảnh ở vị trí tuyệt đối */
+                top: 0;
+                left: 0;
+                z-index: 5; /* Đặt z-index thấp nhất cho hình ảnh, nằm dưới các thành phần khác */
+            }
+        </style>
+        <div class="loader">
+            <img th:src="${movie.image}" alt="Background Image">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="spinner1"></div>
+            </div>
+            <div class="loading-text">Đang tải danh sách ghế...</div>
+        </div>
+    </template>
+
+    <script>
+        class LoaderComponent extends HTMLElement {
+            constructor() {
+                super();
+                const template = document.getElementById('loader-template').content;
+                this.attachShadow({mode: 'open'}).appendChild(template.cloneNode(true));
+            }
+
+            connectedCallback() {
+                // Giữ loader hiển thị trong 1.5 giây
+                setTimeout(() => {
+                    const loader = this.shadowRoot.querySelector('.loader');
+                    loader.classList.add('hidden'); // Bắt đầu hiệu ứng mờ dần
+
+                    // Sau 0.5 giây (thời gian của hiệu ứng mờ dần), loại bỏ loader khỏi DOM
+                    setTimeout(() => {
+                        loader.remove(); // Loại bỏ loader khỏi DOM
+                    }, 500); // Thời gian khớp với thời gian mờ dần trong CSS
+                }, 1500); // Thời gian giữ loader hiển thị trước khi mờ dần
+            }
+        }
+
+        customElements.define('loader-component', LoaderComponent);
+    </script>
+
+    <loader-component></loader-component>
+</div>

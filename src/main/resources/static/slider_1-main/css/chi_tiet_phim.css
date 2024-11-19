@@ -1,0 +1,1001 @@
+.khung {
+	padding-top: 56px;
+	position: relative;
+}
+
+.khung .movie-card-big {
+	font: 14px/22px "Lato", Arial, sans-serif;
+	padding: 40px 0;
+}
+
+.khung .movie-card-big .container-fluid .hero {
+	height: 500px;
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	background: none;
+}
+
+.khung .movie-card-big .container-fluid .hero:before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	/* background: url('https://c.wallhere.com/photos/0d/a6/Marvel_Comics_Marvel_Super_Heroes_looking_at_viewer_digital_art_Iron_Man_superhero_armor_glowing_eyes-2258630.jpg!d'); */
+	z-index: -1;
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* Đảm bảo hình ảnh lấp đầy vùng chứa */
+	background-position: center;
+	/* Hình ảnh sẽ luôn được căn giữa */
+	transform: skewY(-2.2deg);
+	transform-origin: 0 0;
+}
+
+.khung .movie-card-big .container-fluid .cover {
+	position: absolute;
+	top: 30%;
+	left: 40px;
+	z-index: 2;
+}
+
+.khung .hero2 {
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 58%;
+	z-index: -1;
+	background-repeat: no-repeat;
+	background-size: contain;
+	/* Thay cover bằng contain để đảm bảo giữ nguyên tỷ lệ */
+	background-position: center;
+	/* Hình ảnh sẽ luôn được căn giữa */
+	transform: skewY(-2.2deg);
+	transform-origin: 0 0;
+	border-bottom: 8px solid #b5c632; /* Đường màu đỏ ở chân */
+}
+
+.khung .movie-card-big .container-fluid .details {
+	margin-top: 1%;
+	padding: 180px 0 0 22.5%;
+	.title1 { position : absolute;
+	top: 80%;
+	color: rgb(255, 255, 255);
+	background-color: rgba(250, 90, 90, 0.8);
+	max-width: 70%;
+	height: 50px;
+	padding: 15px 25px;
+	font-size: 40px;
+	border-radius: 4px;
+	margin-bottom: 13px;
+	font-family: "Roboto", serif;
+	font-weight: 600;
+}
+
+.title2 {
+	position: absolute;
+	top: 72%;
+	left: 25%;
+	color: #e6e2dd;
+	font-size: 20px;
+	font-weight: 400;
+	margin-bottom: 15px;
+}
+
+.likes {
+	margin-left: 24px;
+	color: #fff;
+}
+
+}
+.khung .movie-card-big .container-fluid .description {
+	height: 470px;
+	font-size: 16px;
+	line-height: 26px;
+	color: #B1B0AC;
+	margin-left: 20%;
+}
+
+.khung .movie-card-big .container-fluid .description .column2 {
+	padding-left: 41px;
+	padding-top: 30px;
+	margin-left: 20px;
+	width: 95%;
+	float: left;
+}
+
+.khung .movie-card-big .container-fluid .custom-img-chititet-phim {
+	width: 250px;
+	height: 300px;
+	position: absolute;
+	top: 30%;
+}
+
+.khung .movie-card-big .container-fluid a img {
+	width: 250px;
+	height: 300px;
+}
+
+.khung .movie-card-big .container-fluid .demo {
+	font-size: 40px;
+	color: #ff3d49;
+}
+
+.khung .movie-card-big .container-fluid .cover1 {
+	position: absolute;
+	color: #e6e0e0;
+	background-color: #ff3d49;
+	z-index: 3;
+	top: 53%;
+	left: 9%;
+	font-size: 40px;
+	border-radius: 100%;
+	padding: 10px;
+	border: none;
+}
+
+/* =========================================== MODAL*/
+.customModal_demo_chiTiet {
+	height: 100px;
+	margin: 0 auto;
+}
+
+.customModal_demo_chiTiet .modal-body {
+	position: relative;
+	padding: 0px;
+}
+
+.customModal_demo_chiTiet .btn-close {
+	position: absolute;
+	right: -30px;
+	top: 0;
+	font-size: 20px;
+}
+
+/* =========================================== MODAL*/
+.customModal_demo_chiTiet {
+	position: relative;
+}
+
+.customModal_demo_chiTiet .modal-content {
+	width: 100%;
+	height: 300px;
+	border-radius: 10px;
+	/* Adds rounded corners to the modal */
+	margin-left: 13%;
+}
+
+.customModal_demo_chiTiet .modal-body {
+	height: 100px;
+	padding: 0;
+	/* Adds padding to the modal body */
+}
+
+.customModal_demo_chiTiet .modal-body iframe {
+	width: 100%;
+	height: 100%;
+}
+
+.customModal_demo_chiTiet .modal-footer .card .col-md-4 img {
+	max-width: 40%;
+}
+
+.customModal_demo_chiTiet .modal-footer .card {
+	border: none;
+}
+
+/* ================================================================MODAL ĐẶT VÉ VÀ ĐÓNG */
+.customModal_demo_chiTiet .modal-content .modal-header .custom-btn-close
+	{
+	border: none;
+	background: none;
+	position: absolute;
+	right: 0%;
+	font-size: 20px;
+	padding: 10px;
+}
+
+.modal .customModal_demo_chiTiet {
+	max-width: 60%;
+	height: 600px;
+	/* Adjusts the width of the modal */
+	margin: 0;
+	margin-left: 12%;
+	/* Centers the modal horizontally */
+	position: relative;
+}
+
+.customModal_demo_chiTiet .modal-content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	margin-left: 13%;
+}
+
+.customModal_demo_chiTiet .modal-content .modal-body {
+	padding: 0;
+}
+
+.khung .movie-card-big .container-fluid .description .column2 {
+	width: 80%;
+}
+
+.khung .movie-card-big .container-fluid .description .column2 .tieu-de-nho1
+	{
+	font-size: 18px;
+	font-weight: 600;
+	color: #000000;
+}
+
+.khung .movie-card-big .container-fluid .description .column2 .tieu-de-nho1 p
+	{
+	font-size: 15px;
+	font-weight: 400;
+	display: flex;
+	color: #8a8a8a;
+}
+
+.khung .movie-card-big .container-fluid .tieu-de-nho {
+	display: flex;
+	gap: 20px;
+	/* Khoảng cách giữa các phần tử */
+	font-size: 18px;
+	font-weight: 600;
+	color: #000000;
+}
+
+.khung .movie-card-big .container-fluid .tieu-de-nho .tieu-de-item p {
+	font-size: 15px;
+	font-weight: 400;
+	color: #8a8a8a;
+}
+
+.tieu-de-item1 span {
+	font-size: 18px;
+	font-weight: 600;
+	color: #000000;
+}
+
+/* ====================================================SAO */
+ .custom_td_col4 {
+	font-size: 20px;
+	font-weight: 700;
+	color: #000000;
+}
+
+
+/* ================================================================ */
+.container .col-lg-4 .custom-card-ct {
+	height: 150px;
+	border: none;
+}
+
+/* ================================================================ */
+.container .col-lg-4 .custom-card-ct {
+	position: relative;
+}
+
+.container .col-lg-4 .custom-card-ct img {
+	position: absolute;
+	height: 100%;
+}
+
+.container .col-lg-4 .custom-card-ct .col-md-8 {
+	position: absolute;
+	height: 100%;
+	left: 30%;
+	color: #000000;
+}
+
+.custom-card-ct {
+	transition: transform 0.3s ease-in-out;
+}
+
+.custom-card-ct:hover {
+	transform: scale(1.05);
+}
+
+/* ================================================================= SAO*/
+.bi-star-fill {
+	color: yellow;
+}
+
+.bi-hand-thumbs-up-fill {
+	color: #ff3d49;
+}
+
+/* ================================================================= CARD DỌC */
+.container .col-lg-4  .movie-card-chi-tiet {
+	display: flex;
+	align-items: center;
+	background-color: white;
+	padding: 5px;
+	margin: 20px;
+	max-width: 600px;
+	border-bottom: 0.1px solid #d4d4d4;
+}
+
+.container .col-lg-4  .movie-poster {
+	width: 80px;
+	border-radius: 5px;
+	margin-right: 15px;
+	object-fit: cover;
+	/* Hoặc contain, fill, tùy vào nhu cầu */
+	height: 120px;
+	/* Đảm bảo ảnh sẽ phủ toàn bộ chiều cao container */
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container .col-lg-4  .movie-poster:hover {
+	transform: scale(1.05);
+	/* Khi hover, thẻ sẽ to lên 5% */
+}
+
+.container .col-lg-4  .movie-info {
+	flex-grow: 1;
+}
+
+.container .col-lg-4  .movie-age-rating {
+	display: inline-block;
+	padding: 4px;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	margin-bottom: 5px;
+	font-size: 10px;
+}
+
+.container .col-lg-4  .age-18 {
+	background-color: #b5c632;
+}
+
+.container .col-lg-4  .movie-title {
+	width: 170px;
+	font-size: 16.5px;
+	font-weight: 500;
+	margin-bottom: 5px;
+	z-index: 10000;
+}
+
+.container .col-lg-4  .movie-title:hover {
+	color: #ff3d49;
+}
+
+.container .col-lg-4  .movie-genre {
+	width: 80%;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 10px;
+}
+
+.container .col-lg-4  .movie-rating {
+	width: 80%;
+	display: flex;
+	align-items: center;
+}
+
+.container .col-lg-4  .star {
+	color: #ffc107;
+	font-size: 16px;
+	margin-right: 5px;
+}
+
+.container .col-lg-4  a {
+	width: 70px;
+	text-align: center;
+	background-color: #d9534f;
+	color: white;
+	padding: 7px 10px;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.container .col-lg-4  a:hover {
+	background-color: #c9302c;
+}
+
+.container .col-lg-4 {
+	text-decoration: none;
+	color: #000000;
+}
+
+.footer-48201 {
+	padding: 7rem 0;
+	background-color: #000;
+	color: #777;
+}
+
+.footer-48201 .footer-site-logo {
+	font-size: 1.5rem;
+	color: #fff;
+}
+
+.footer-48201 .nav-links li {
+	margin-bottom: 10px;
+}
+
+.footer-48201 .nav-links li a {
+	color: gray;
+}
+
+.footer-48201 .nav-links li a:hover {
+	color: #fff;
+}
+
+.footer-48201 .btn.btn-tertiary {
+	background-color: #e42c64;
+	color: #fff;
+	border-radius: 30px;
+	border: none;
+	padding: 10px 20px;
+}
+
+.footer-48201 .social li {
+	display: inline-block;
+}
+
+.footer-48201 .social li a {
+	color: gray;
+	padding: 7px;
+}
+
+.footer-48201 .social li a:hover {
+	color: #fff;
+}
+
+.footer-48201 .copyright {
+	border-top: 1px solid #404040;
+}
+
+.footer-48201 a {
+	text-decoration: none;
+}
+
+/* ========================================================BTN MORE */
+.container .box-container .box-card {
+	background-color: #fff;
+	border-radius: 5px;
+	display: none;
+	width: 260px;
+	height: 150px;
+	position: relative;
+	margin-bottom: 10%;
+	margin-right: 20px;
+}
+
+.container .box-container .box-card:hover .span-top-phim {
+	color: #ff3d49;
+}
+
+/* Đặt màu mặc định cho span */
+.container .box-container .box-card .span-top-phim {
+	font-size: 17px;
+	font-weight: 600;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: #000;
+	/* Màu mặc định */
+	transition: color 0.3s ease;
+	/* Thay đổi màu sắc mượt mà */
+}
+
+.container .box-container .box-card .span-luot-xem {
+	font-size: 13px;
+	font-weight: 400;
+	color: #777;
+}
+
+.container .box-container .box-card:nth-child(1), .container .box-container .box-card:nth-child(2),
+	.container .box-container .box-card:nth-child(3) {
+	display: inline-block;
+}
+
+.container .box-container .box-card .image {
+	margin-bottom: 20px;
+	overflow: hidden;
+	height: 100%;
+	border-radius: 5px;
+}
+
+.container .box-container .box-card .image img {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 5px;
+}
+
+#load-more {
+	display: inline-block;
+	padding: 15px 30px;
+	border: 1px solid #334;
+	color: #334;
+	font-size: 16px;
+	background-color: #fff;
+	cursor: pointer;
+	transition: background-color 0.5s ease, border-color 0.5s ease, color
+		0.5s ease;
+	/* Adjust the duration and easing function as needed */
+}
+
+#load-more:hover {
+	background-color: crimson;
+	border-color: crimson;
+	color: #fff;
+}
+
+.card-datve .col-md-10 .card-body {
+	color: #000;
+}
+
+.ghdt {
+	position: absolute;
+	z-index: 3;
+	top: 71%;
+	background-color: rgb(113, 175, 38);
+	color: #fff;
+	padding: 5px;
+	border-radius: 5px;
+	margin-bottom: 5%;
+	font-weight: 900;
+}
+
+.card-body .card-title {
+	width: 100%;
+	height: 20px;
+}
+
+.col-md-2 img {
+	width: 100%;
+	/* Đặt chiều rộng là 100% để hình ảnh tự động điều chỉnh theo chiều rộng của cột */
+	height: auto;
+	/* Tự động điều chỉnh chiều cao để giữ tỉ lệ khung hình */
+	max-height: 180px;
+	/* Giới hạn chiều cao tối đa để không vượt quá 180px */
+	background-repeat: no-repeat;
+	object-fit: cover;
+	/* Giữ tỉ lệ khung hình cho hình ảnh, cắt bỏ những phần không cần thiết */
+	border-radius: 5px; /* Tùy chọn: làm tròn các góc của hình ảnh */
+}
+
+#loadMoreBtn_cardPhimDangChieu {
+	border-radius: 0%;
+	border: none;
+	background-color: #d9534f;
+}
+
+#loadMoreBtn_cardPhimDangChieu:hover {
+	background-color: #c9302c;
+}
+
+#toggleButton, #toggleButton2 {
+	font-size: 15px;
+	font-weight: 400;
+	color: blue;
+	font-style: italic;
+}
+
+#toggleButton:hover, #toggleButton2:hover {
+	cursor: pointer;
+}
+
+.btnXuatChieu {
+	background: none;
+	border: 1px solid #ff3d49;
+	color: #ff3d49;
+	text-decoration: none;
+	padding: 5px 13px;
+	border-radius: 4px;
+}
+
+.btnXuatChieu:hover {
+	color: #ff3d49;
+}
+
+.tieu-de-item1 .room-name span {
+	font-size: 15px;
+	font-style: italic;
+	color: #ff3d49;
+}
+
+.mt-1 {
+	display: flex; /* Dùng flexbox để sắp xếp các phần tử nằm ngang */
+	flex-wrap: wrap; /* Cho phép các phần tử xuống dòng nếu không đủ chỗ */
+	gap: 20px; /* Tạo khoảng cách giữa các phần tử */
+}
+
+.room-name {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.description {
+	width: 90%; /* Chiếm toàn bộ chiều rộng */
+	height: auto;
+}
+
+#fullContent {
+	max-height: 200px;  /* Giới hạn chiều cao tối đa */
+	overflow-y: auto;   /* Tự động thêm thanh cuộn nếu nội dung vượt quá chiều cao */
+	word-wrap: break-word; /* Tự động xuống dòng nếu từ quá dài */
+}
+
+
+/* ========================================================BTN MORE */
+/* ========================================================BTN MORE */
+
+section a {
+	text-decoration: none;
+	color: #0d6efd;
+}
+.customBtnReviewPost, .customBtnReviewCancel {
+	width: 70px;  /* Đặt chiều dài của nút */
+	height: 30px;  /* Đặt chiều cao của nút */
+	padding: 4px;  /* Điều chỉnh padding bên trong nút */
+	font-size: 12px;  /* Điều chỉnh kích thước chữ */
+	border-radius: 4px;
+	color: #fff;
+	border: none;
+	background-color: #0d6efd;
+}
+
+.customBtnReviewCancel {
+	background: none;
+	outline: 1px solid #ec0f5a;
+	color: #ec0f5a;
+}
+
+.float-end {
+	display: flex;  /* Sử dụng flexbox để canh chỉnh nút nằm ngang nhau */
+	justify-content: flex-end;  /* Canh chỉnh các nút sang bên phải */
+}
+
+/*
+font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+*/
+body{
+	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.swal2-title {
+	font-family: 'FontName', sans-serif; /* Thay 'FontName' bằng tên font bạn muốn */
+}
+
+.swal2-content {
+	font-family: 'FontName', sans-serif; /* Thay 'FontName' bằng tên font bạn muốn */
+}
+
+.customDeleteReview {
+	border: none;
+	background: none;
+}
+.customDeleteReview i {
+	font-size: 20px;
+	color: #ed3e50;
+}
+
+.customDeleteReview i {
+	font-size: 20px;
+	color: #ed3e50;
+	transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease; /* Thêm hiệu ứng chuyển tiếp */
+}
+
+.customDeleteReview i:hover {
+	color: #ff4d00; /* Thay đổi màu sắc khi hover */
+	transform: scale(1.2); /* Tăng kích thước nhẹ khi hover */
+	opacity: 0.8; /* Giảm độ mờ một chút */
+	cursor: pointer; /* Thay đổi con trỏ chuột thành tay khi hover */
+}
+.customDeleteReview {
+	position: relative; /* Thiết lập vị trí tương đối cho button */
+}
+
+.delete-text {
+	display: none; /* Ẩn văn bản theo mặc định */
+	position: absolute; /* Đặt vị trí tuyệt đối */
+	bottom: -20px; /* Điều chỉnh vị trí phía dưới icon */
+	left: 50%; /* Căn giữa theo chiều ngang */
+	transform: translateX(-50%); /* Căn giữa chính xác */
+	font-size: 12px; /* Kích thước chữ nhỏ hơn */
+	color: #ed3e50; /* Màu chữ */
+	transition: opacity 0.3s ease; /* Thêm hiệu ứng chuyển tiếp */
+}
+
+.customDeleteReview:hover .delete-text {
+	display: block; /* Hiện văn bản khi hover */
+	opacity: 1; /* Đảm bảo độ mờ của văn bản là 1 */
+}
+
+.customDeleteReview i {
+	font-size: 20px;
+	color: #ed3e50;
+	transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+.customDeleteReview i:hover {
+	color: #6e000a;
+	transform: scale(1.2);
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+/*BTN XEM THÊM REVIEW*/
+
+.cardReview {
+	display: none;
+}
+.cardReview.show {
+	display: block;
+}
+
+#loadMoreBtn {
+	border: none;
+	background: none;
+	color: #0b5ed7;
+}
+/*BTN XEM THÊM REVIEW*/
+
+/* Container chung cho phần Rạp Chiếu */
+
+/* Kiểu dáng cho nút điều hướng */
+
+
+
+
+/*CSS SHOWTIMES*/
+.showtime-container {
+	display: flex;
+	flex-wrap: wrap; /* Allows items to wrap if necessary */
+	gap: 4px; /* Smaller space between items for a compact look */
+}
+
+.showtime-item {
+	min-width: 150px; /* Minimum width for each item; adjust as needed */
+	flex: 0 1 auto; /* Makes items grow if space is available but doesn’t stretch all equally */
+}
+
+/* Default Styling for Cinema Tab Buttons */
+
+
+/* Default Styling for Small Buttons */
+/* Default Styling for Small Buttons */
+
+
+
+/* Căn chỉnh các nút tab */
+.cinema ul {
+	display: flex;
+	justify-content: start; /* Hoặc center nếu bạn muốn căn giữa */
+	gap: 10px;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Kiểu dáng nút tab */
+.cinema ul li button {
+	margin-top: 8px;
+	margin-right: 10px;
+	padding: 5px 10px;
+	border: 2px solid #cdcbcb;
+	border-radius: 20px;
+	background-color: #f8f9fa;
+	color: #333;
+	font-weight: 500;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.3s ease; /* Tạo hiệu ứng chuyển đổi mượt mà */
+}
+
+/* Hiệu ứng hover */
+.cinema ul li button:hover {
+	background-color: #e1e1e1; /* Màu nền nhẹ khi hover */
+	color: #333; /* Giữ màu chữ tối */
+	border-color: #b5b5b5; /* Đổi màu viền nhẹ */
+}
+
+/* Nút tab đang hoạt động */
+.cinema ul li button.active,
+.cinema ul li button:focus {
+	background-color: #ff3d49; /* Màu nền nổi bật khi chọn */
+	color: #fff;
+	border-color: #ff3d49;
+	box-shadow: 0 4px 8px rgba(255, 61, 73, 0.4); /* Tạo bóng nhẹ cho nút */
+}
+
+/* Kiểu dáng tab content */
+
+.cinema .title-xc {
+	font-size: 18px;
+	font-weight: 600;
+	color: #000000;
+}
+
+.room-name span {
+	font-size: 15px;
+	color: #ff3d49;
+	font-style: italic;
+}
+
+#loadMoreBtn_cardPhimDangChieu:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+
+/*CSS PHIM CHIEU*/
+.sidebar {
+	width: 250px;
+	background-color: #fff;
+	padding: 20px;
+	box-sizing: border-box;
+	height: 100vh;
+	overflow-y: auto;
+}
+
+/* Ô tìm kiếm */
+.sidebar input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+/* Danh sách rạp trong sidebar */
+.sidebar ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sidebar ul li {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+	cursor: pointer;
+}
+
+.sidebar ul li img {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.sidebar ul li.active {
+	background-color: #fce4ec;
+}
+
+.sidebar ul li:last-child {
+	border-bottom: none;
+}
+
+.sidebar .more {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.sidebar .more button {
+	background-color: #f8bbd0;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+/* Content chính */
+.content {
+	flex: 1;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+/* Header của content */
+.content .header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.content .header img {
+	width: 50px;
+	height: 50px;
+}
+
+.content .header .info {
+	flex: 1;
+	margin-left: 20px;
+}
+
+.content .header .info h2 {
+	margin: 0;
+	font-size: 18px;
+}
+
+.content .header .info p {
+	margin: 5px 0 0;
+	color: #888;
+}
+
+.content .header .info a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+/* Ngày tháng chọn phim */
+.content .dates {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.content .dates button {
+	flex: 1;
+	padding: 10px;
+	border: 1px solid #ddd;
+	background-color: #fff;
+	cursor: pointer;
+}
+
+.content .dates button.active {
+	background-color: #f8bbd0;
+	color: #fff;
+}
+
+.content .dates button:not(:last-child) {
+	border-right: none;
+}
+
+/* Phần phim */
+.content .movie {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.content .movie img {
+	width: 100px;
+	height: 150px;
+	margin-right: 20px;
+}
+
+.content .movie .details {
+	flex: 1;
+}
+
+.content .movie .details h3 {
+	margin: 0;
+	font-size: 18px;
+}
+
+.content .movie .details p {
+	margin: 5px 0;
+	color: #888;
+}
+
+.content .movie .details .times {
+	display: flex;
+	margin-top: 10px;
+}
+
+.content .movie .details .times button {
+	padding: 5px 10px;
+	border: 1px solid #007bff;
+	background-color: #fff;
+	color: #007bff;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+.content .movie .details .times button:last-child {
+	margin-right: 0;
+}

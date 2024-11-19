@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <h2>Thêm suất chiếu cho phim <span th:text="${movie.movieName}">Tên phim</span></h2>
+
+<form th:action="@{/save-showtime}" th:object="${showtime}" method="post">
+    <!-- Truyền movieId như một tham số ẩn -->
+    <input type="hidden" name="movieId" th:value="${movie.movieId}" />
+
+    <label>Ngày chiếu:</label>
+    <input type="date" th:field="*{showDate}" required />
+
+    <label>Giờ bắt đầu:</label>
+    <input type="time" th:field="*{startTime}" required />
+
+    <label>Giờ kết thúc:</label>
+    <input type="time" th:field="*{endTime}" required />
+
+    <label>Phòng:</label>
+    <select th:field="*{room.roomId}" required>
+        <option th:each="room : ${rooms}" 
+                th:value="${room.roomId}" 
+                th:text="${room.roomName}">Phòng</option>
+    </select>
+
+    <label>Rạp:</label>
+    <select th:field="*{cinemaInformation.cinemaId}" required>
+        <option th:each="cinema : ${cinemas}" 
+                th:value="${cinema.cinemaId}" 
+                th:text="${cinema.cinemaName}">Rạp</option>
+    </select>
+
+    <button type="submit">Thêm suất chiếu</button>
+</form>
+
+  
+</body>
+</html>

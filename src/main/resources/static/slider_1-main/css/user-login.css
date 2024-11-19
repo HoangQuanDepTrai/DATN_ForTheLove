@@ -1,0 +1,423 @@
+/* From Uiverse.io by micaelgomestavares */
+.form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 30px;
+    width: auto;
+    /* box-shadow: 0 0 2px rgb(112, 111, 111); */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+.form-login button {
+    align-self: flex-end;
+}
+
+.flex-column>label {
+    color: #151717;
+    font-weight: 600;
+}
+
+.inputForm {
+    border: 1.5px solid #ecedec;
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: 0.2s ease-in-out;
+}
+
+.input {
+    margin-left: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 85%;
+    height: 100%;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.inputForm:focus-within {
+    border: 1.5px solid #2d79f3;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.flex-row>div>label {
+    font-size: 14px;
+    color: black;
+    font-weight: 400;
+}
+
+.span {
+    font-size: 14px;
+    margin-left: 5px;
+    color: #2d79f3;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button-submit {
+    margin: 20px 0 10px 0;
+    background-color: #151717;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.button-submit:hover {
+    background-color: #252727;
+}
+
+.p {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.btn {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+    border: 1px solid #ededef;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.btn:hover {
+    border: 1px solid #2d79f3;
+}
+
+.custom-tieude-login {
+    font-size: 40px;
+    text-align: center;
+    /* Centers the text horizontally */
+    display: flex;
+    /* Sets display to flex */
+    justify-content: center;
+    /* Centers content horizontally */
+    align-items: center;
+    /* Centers content vertically */
+    height: 100%;
+    /* Optional: set a height to make vertical centering work */
+    color: #000;
+}
+
+/* ================== FOOTTER============= */
+
+
+.footer-48201 {
+    padding: 7rem 0;
+    background-color: #000;
+    color: #777;
+}
+
+.footer-48201 .footer-site-logo {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.footer-48201 .nav-links li {
+    margin-bottom: 10px;
+}
+
+.footer-48201 .nav-links li a {
+    color: gray;
+}
+
+.footer-48201 .nav-links li a:hover {
+    color: #fff;
+}
+
+.footer-48201 .btn.btn-tertiary {
+    background-color: #e42c64;
+    color: #fff;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 20px;
+}
+
+.footer-48201 .social li {
+    display: inline-block;
+}
+
+.footer-48201 .social li a {
+    color: gray;
+    padding: 7px;
+}
+
+.footer-48201 .social li a:hover {
+    color: #fff;
+}
+
+.footer-48201 .copyright {
+    border-top: 1px solid #404040;
+}
+
+.footer-48201 a {
+    text-decoration: none;
+}
+
+
+/* =========================================== ICON FOOTER*/
+/* From Uiverse.io by WAIOKYERE */
+
+
+.example-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.example-2 .icon-content {
+    margin: 0 10px;
+    position: relative;
+}
+
+.example-2 .icon-content .tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 15px;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.example-2 .icon-content:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: -50px;
+}
+
+.example-2 .icon-content a {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+    color: #4d4d4d;
+    background-color: #ffff;
+    transition: all 0.3s ease-in-out;
+}
+
+.example-2 .icon-content a:hover {
+    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 50%);
+}
+
+.example-2 .icon-content a svg {
+    position: relative;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+}
+
+.example-2 .icon-content a:hover {
+    color: white;
+}
+
+.example-2 .icon-content a .filled {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #000;
+    transition: all 0.3s ease-in-out;
+}
+
+.example-2 .icon-content a:hover .filled {
+    height: 100%;
+}
+
+.example-2 .icon-content a[data-social="spotify"] .filled,
+.example-2 .icon-content a[data-social="spotify"]~.tooltip {
+    background-color: #1db954;
+}
+
+.example-2 .icon-content a[data-social="pinterest"] .filled,
+.example-2 .icon-content a[data-social="pinterest"]~.tooltip {
+    background-color: #bd081c;
+}
+
+.example-2 .icon-content a[data-social="dribbble"] .filled,
+.example-2 .icon-content a[data-social="dribbble"]~.tooltip {
+    background-color: #ea4c89;
+}
+
+.example-2 .icon-content a[data-social="telegram"] .filled,
+.example-2 .icon-content a[data-social="telegram"]~.tooltip {
+    background-color: #0088cc;
+}
+
+.example-2 .icon-content a[data-social="facebook"] .filled,
+.example-2 .icon-content a[data-social="facebook"]~.tooltip {
+    background-color: #0088cc;
+}
+
+/* =========================================== Liên hệ với chúng tôi btn=======================*/
+/* From Uiverse.io by zanina-yassine */
+
+
+.btn-container {
+    width: 200px;
+    height: 60px;
+    position: relative;
+    overflow: visible;
+    float: right;
+}
+
+.btn-container a {
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.btn-container a:hover {
+    color: white;
+}
+
+.btn-container::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 20px;
+    z-index: -1;
+    background: #03001e;
+    background: linear-gradient(80deg, #ffcbf2, #ec38bc, #7303c0, #03001e);
+    filter: blur(20px);
+    opacity: 0;
+}
+
+.btn-container:hover {
+    transform: scale(1.1);
+    transition: all 0.6s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.btn-container:hover:after {
+    transition: all 0.6s cubic-bezier(0.15, 0.83, 0.66, 1);
+    opacity: 0.6;
+}
+
+
+
+/* =========================================== khung1*/
+/* =========================================== CHECKBOX*/
+/* From Uiverse.io by mscholz-dev */
+/* add this to your :root variables */
+.checkbox {
+    --light: rgba(207, 205, 205, 0.425);
+    --primary-color: #8c00ff;
+    --duration: 0.3s;
+    --ease: ease-in-out;
+
+}
+
+/* hide checkbox */
+.checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox label {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+}
+
+.checkbox label span {
+    margin-left: 8px;
+}
+
+.checkbox svg {
+    height: 20px;
+    width: 20px;
+}
+
+/* svg rectangle property */
+.checkbox svg>rect {
+    fill: var(--light);
+    stroke: #4000ff;
+    /* responsive values */
+    stroke-dasharray: 400%;
+    stroke-dashoffset: 400%;
+    transition: var(--duration) stroke-dashoffset var(--ease);
+}
+
+/* svg check property */
+.checkbox svg path {
+    stroke: var(--primary-color);
+    /* responsive values */
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 100%;
+    transition: var(--duration) stroke-dashoffset var(--ease);
+}
+
+.checkbox input[type="checkbox"]:checked+label svg>rect,
+.checkbox input[type="checkbox"]:checked+label svg path {
+    stroke-dashoffset: 0;
+}
+
+
+/* =========================================== khung1*/
+/* =========================================== BTN LOGIN*/
+/* From Uiverse.io by iZOXVL */
+.boton-elegante {
+    padding: 10px 15px;
+    border: 2px solid #2c2c2c;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+    width: 100%;
+}
+
+.boton-elegante:hover {
+    border-color: #666666;
+    background: #292929;
+}
+input:focus {
+    background-color: transparent; /* Hoặc màu bạn muốn */
+}
+
+
+/* =========================================== khung1*/

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Vé Xem Phim</title>
+    <link rel="icon" href="/slider_1-main/image/ok.png" type="image/png">
+
+    <link rel="stylesheet" href="/slider_1-main/css/style.css">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+            rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <link rel="stylesheet" href="/slider_1-main/css/datve2.css">
+
+
+</head>
+
+<body>
+<!-- Loading... -->
+
+<div th:replace="userViews/loader-booking:: .loader-template"></div>
+
+<div th:replace="userViews/header:: .navbar"></div>
+
+<div class="div-top"></div>
+<!-- Thêm hình ảnh background -->
+<div class="background-container" th:each="movie : ${movies}">
+    <img th:src="${movie.image_bg}" alt="Background"
+         class="background-img-datVe">
+    <!-- Nội dung khác của bạn ở đây -->
+</div>
+
+
+<div id="seatMapContainer" class="pb-5">
+
+    <div class="container">
+        <div>
+            <button id="backButton">
+                <i class="bi bi-chevron-double-left"></i>
+            </button>
+        </div>
+        <div th:each="movie : ${movies}">
+            <h1 class="text-center my-4 datVeFontName"
+                th:text="${movie.movieName}"></h1>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="screen">MÀN HÌNH</div>
+                <div class="row g-0">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10 d-flex seat-container flex-wrap justify-content-center">
+                        <div class="seat-container d-flex flex-wrap justify-content-center">
+
+                            <div th:each="seat : ${seats}" class="seat-wrapper">
+                                <button class="seat"
+                                        th:text="${seat.seatName}"
+                                        th:classappend="${#lists.contains(bookedSeatNames, seat.seatId.toString()) ? 'seat-booked' : (seat.status.toLowerCase() == 'vip' ? 'seat-vip' : '')}"
+                                        th:disabled="${#lists.contains(bookedSeatNames, seat.seatId.toString()) ? 'true' : 'false'}"
+                                        th:value="${seat.seatPrice}"
+                                        th:attr="data-seat-id=${seat.seatId}"
+                                        onclick="selectSeat(this)"> <!-- Gọi hàm selectSeat -->
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+                <div class="text-center">
+                    <div id="selectedSeatsDisplay" class="ma-1" style="color: #fff">
+                        Tất cả ghế được chọn!
+                    </div>
+                </div>
+            </div>
+            <div class="col-separator col-lg-1">
+                <div class="separator"></div>
+            </div>
+
+            <div class="col-lg-4 mt-3">
+                <h3 class="datVeFont">Thông tin phim</h3>
+                <ul class="list-unstyled ms-1">
+                    <!-- Duyệt qua danh sách ca chiếu -->
+                    <li th:each="showtime : ${showtimes}">
+                        <p style="display:none;">Showtime ID: <strong><span
+                                th:text="${showtime.showtimeId}"></span></strong></p>
+                        Giới hạn độ tuổi: <strong><span th:text="${showtime.ageRestriction} + '+'"></span></strong><br/>
+                        Ngày chiếu:<strong> <span
+                            th:text="${#temporals.format(showtime.showDate, 'dd-MM-yyyy')} + (iterStat.last ? '.' : ', ')"></span></strong><br/>
+                        Thời gian chiếu:<strong> <span
+                            th:text="${showtime.startTime} + ' ~ ' + ${showtime.endTime}"></span></strong><br/>
+                        Phòng chiếu:<strong> <span th:text="${showtime.roomName}"></span></strong><br/>
+                        Thể loại phim:<strong> <span th:text="${showtime.genre}"></span></strong><br/>
+                    </li>
+
+                </ul>
+
+
+                <h4 class="mt-4 datVeFont">Chú thích</h4>
+                <div class="legend-container">
+                    <div class="d-flex align-items-center">
+                        <span class="seat seat-small"></span>Ghế thường
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="seat vip seat-small"></span> Ghế VIP
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="seat disabled seat-small"></span> Đã đặt
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="seat selected seat-small "></span> Ghế bạn đang chọn
+                    </div>
+                </div>
+
+                <div class="datveSpanVND">
+                    <h4 class="mt-3 datVeFont">Tổng số tiền:</h4>
+                    <div id="totalAmount">
+                        0<span class="spanVND"> VND</span>
+                    </div>
+                </div>
+
+
+                <button class="mt-3 btnDatVe-seat" onclick="confirmBooking()">Đặt
+                    vé
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="comboModal" tabindex="-1"
+     aria-labelledby="comboModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-datVe">
+        <div class="modal-content modal-content-datVe">
+            <div class="modal-header">
+                <h5 class="modal-title" id="comboModalLabel">Combo Bắp Nước Hạng Nhất</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-body-datVe">
+                <div class="draggable-content" th:each="product : ${products}">
+                    <div class="row mb-4">
+                        <div class="col-md-5 mb-3 mb-md-0">
+                            <img th:src="${product.productImage}" class="img-fluid rounded"
+                                 alt="Hình ảnh Combo Bắp Nước">
+                        </div>
+                        <div class="col-md-7">
+                            <h5 class="mb-3 mt-3 customProduct_title" th:text="${product.productName}"></h5>
+                            <h5 class="mb-3 mt-3 product-id" th:text="${product.productId}" style="display: none;"></h5>
+                            <!-- ID sản phẩm ẩn -->
+                            <p class="price mb-3" style="font-size: 1.25rem; font-weight: bold;"
+                               data-price="${product.productPrice}"
+                               th:text="${#numbers.formatCurrency(product.productPrice)}"></p>
+                            <p class="mb-3" th:text="${product.productDescription}"></p>
+
+                            <!-- Nút tăng, giảm số lượng -->
+                            <div class="d-flex align-items-center mb-3">
+                                <button type="button" class="btn-decrease" onclick="updateQuantity(this, -1)">-</button>
+                                <input type="text" class="form-control text-center comboQuantity" value="0"
+                                       oninput="validateInput(this);" style="width: 60px;">
+                                <button type="button" class="btn-increase" onclick="updateQuantity(this, 1)">+</button>
+                            </div>
+
+                            <div>
+                                <h6 class="mb-2">Tổng tiền:</h6>
+                                <div class="highlight comboTotalAmount" style="font-size: 1.5rem; font-weight: bold;">0
+                                    VND
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <h6 class="mb-2">Tổng tiền sản phẩm:</h6>
+                <div id="comboTotalAmount1" style="font-size: 1.5rem; font-weight: bold;">0 VND</div>
+
+                <form id="bookingForm" action="/booking/confirmBooking" method="POST">
+                    <div th:each="showtime : ${showtimes}">
+                        <input type="hidden" name="showtimeId" th:value="${showtime.showtimeId}"/>
+                        <!-- Thêm input ẩn cho showtimeId -->
+                        <input type="hidden" id="selectedSeats" name="selectedSeats">
+                        <input type="hidden" id="products" name="products">
+                    </div>
+
+                    <button type="button" onclick="submitBooking(this)" class="btn btnXacNhan">Xác Nhận</button>
+                </form>
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal -->
+<div th:replace="userViews/footer:: footer"></div>
+
+<script src="/slider_1-main/js/datve2.js"></script>
+
+<!-- Bootstrap JS -->
+<script
+        src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS -->
+<script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-eMNrdBAl6Zn2oWrfmQpCdL6yOI/m8WxJ6vSPOhFuU0yl14p7mtUL6cI6K7wrKTm"
+        crossorigin="anonymous">
+</script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eydeubwZ3IStQpkoY2TXdh5Zj2u6pHf5r8P5eV9z0v6l2sqS5Zt1y5T"
+        crossorigin="anonymous">
+</script>
+
+
+<!--
+<script>
+    var stompClient = null;
+
+    function connect() {
+        var socket = new SockJS('/ws');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/seatStatus', function (seat) {
+                updateSeatStatus(JSON.parse(seat.body));
+            });
+        });
+    }
+
+    function updateSeatStatus(seat) {
+        var seatElement = document.querySelector('[data-seat-id="' + seat.seatId + '"]');
+        if (seatElement) {
+            if (seat.status === 'locked') {
+                alert('Ghế này đã được người khác chọn.');
+            } else {
+                seatElement.classList.add('seat-booked');
+                seatElement.disabled = true;
+            }
+        }
+    }
+
+    function selectSeat(button) {
+        var seatId = button.getAttribute('data-seat-id');
+        var seat = {
+            seatId: seatId,
+            status: 'reserved'
+        };
+        stompClient.send("/app/seat/select", {}, JSON.stringify(seat));
+    }
+
+    window.onload = function() {
+        connect();
+    };
+</script>-->
+
+</body>
+
+</html>
